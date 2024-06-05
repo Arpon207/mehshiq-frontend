@@ -1,0 +1,45 @@
+.slider {
+  position: relative;
+  max-height: 300px;
+}
+
+.slider img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.slider h3 {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: fit-content;
+  width: fit-content;
+  font-size: 52px;
+  color: rgb(255, 255, 255, 0.9);
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.slider .swiper-pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.slider .swiper-pagination-bullet {
+  background: none;
+  border: 2px solid white !important;
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+}
+
+.slider .swiper-pagination-bullet-active {
+  background-color: white;
+  border: none;
+}

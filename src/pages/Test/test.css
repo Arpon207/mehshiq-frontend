@@ -1,0 +1,15 @@
+.grid-test {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 10px;
+}
+
+.grid-test div {
+  background-color: blue;
+}
+
+.grid2 {
+  grid-column: span 4;
+  grid-row: span 4;
+}

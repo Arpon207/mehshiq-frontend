@@ -1,0 +1,122 @@
+.banner-container {
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 10px;
+  width: 95%;
+  margin: 0 auto 0;
+}
+
+.banner-container > div {
+  border-radius: 5px;
+}
+
+.banner-container .bannerCard1 {
+  background-color: var(--clr1);
+  grid-column: span 4;
+  grid-row: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-container .bannerDesc h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.banner-container .bannerDesc h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.banner-container .bannerDesc p {
+  width: 80%;
+  text-align: justify;
+}
+
+.banner-container .bannerCard2 {
+  background-color: #fcede6;
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.model {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.model h3 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 26px;
+}
+
+.banner-container .bannerCard3 {
+  background-color: #fcede6;
+  grid-column: span 2;
+}
+
+.bannerCard3 img {
+  max-width: 250px;
+}
+
+.banner-container .bannerCard4 {
+  background-color: #f3e3bf;
+  grid-column: span 1;
+  padding: 20px;
+}
+
+.bannerCard4 div {
+  border: 2px solid black;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.bannerCard4 h3 {
+  font-size: 24px;
+}
+
+.banner-container .bannerCard5 {
+  background-color: #f3e3bf;
+  grid-column: span 3;
+}
+
+.bannerCard5 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  position: relative;
+}
+
+.bannerCard5 div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #f0efff71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bannerCard5 button {
+  border: none;
+  padding: 8px 20px;
+  background-color: #f0efff;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.bannerCard5 img {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,50 @@
+.homeMensCollection {
+  width: 80%;
+  margin: 0 auto 100px;
+}
+
+.homeMensCollection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.homeMensCollection-header h3 {
+  font-size: 26px;
+  text-align: center;
+  color: black;
+}
+
+.homeMensCollection-header div {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.homeMensCollection-header button {
+  font-size: 22px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+.men-collection-banner img {
+  border-radius: 10px;
+}
+
+.homeMensCollection-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+}
+
+.homeMensCollection-container .mySwiper {
+  width: 100%;
+  padding: 20px 20px 30px !important;
+}

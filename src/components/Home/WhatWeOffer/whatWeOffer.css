@@ -1,0 +1,50 @@
+.whatWeOffer {
+  margin-bottom: 50px !important;
+}
+
+.whatWeOffer h3 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.whatWeOffer .whatWeOffer-container {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.whatWeOffer-container div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.whatWeOffer-container .special1 {
+  background-color: var(--clr1);
+}
+
+.whatWeOffer-container .special2 {
+  background-color: var(--clr2);
+}
+
+.whatWeOffer-container .special3 {
+  background-color: var(--clr3);
+}
+
+.whatWeOffer-container div p:first-child {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.whatWeOffer-container div img {
+  width: 100px;
+}

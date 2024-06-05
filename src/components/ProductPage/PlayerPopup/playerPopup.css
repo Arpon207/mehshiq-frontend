@@ -1,0 +1,46 @@
+.playerPopup {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+}
+
+.playerPopup button {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+}
+
+.playerPopup .video-container {
+  height: 720px;
+  width: 1280px;
+  aspect-ratio: 16/9;
+  margin: 0 auto;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.playerPopup .video-container video {
+  height: 100%;
+}

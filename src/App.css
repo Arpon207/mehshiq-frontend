@@ -1,0 +1,8 @@
+.test {
+  p {
+    background-color: orange;
+    color: black;
+    font-weight: 500;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,49 @@
+.newArrivals {
+  margin: 120px auto !important;
+}
+
+.newArrivals h3 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.newArrivals h5 {
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+  font-weight: 500;
+}
+
+.newArrivals .mySwiper {
+  position: relative;
+  padding: 20px 20px 40px !important;
+}
+
+.newArrivals .nextElBtn,
+.newArrivals .prevElBtn {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5debd7;
+  font-size: 20px;
+  position: absolute;
+  border: none;
+  z-index: 99;
+}
+
+.newArrivals .nextElBtn {
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 5px 0 0 5px;
+}
+
+.newArrivals .prevElBtn {
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 0 5px 5px 0;
+}

@@ -1,0 +1,21 @@
+.productPageTabs {
+  margin: 80px 0 50px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.productPageTabs .tab {
+  border: none;
+  background-color: var(--clr4);
+  color: white;
+  font-size: 18px;
+  width: 150px;
+  padding: 8px 0;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.productPageTabs .tab-active {
+  background-color: black;
+}

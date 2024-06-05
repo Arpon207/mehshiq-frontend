@@ -1,0 +1,28 @@
+.products {
+  margin-top: 30px;
+}
+
+.productsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productsHeader > h3 {
+  font-size: 24px;
+}
+
+.productsHeader select {
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  border-radius: 5px;
+  outline: none;
+}
+
+.products-card-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
