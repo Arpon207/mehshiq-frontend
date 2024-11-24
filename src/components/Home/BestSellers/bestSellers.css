@@ -4,6 +4,7 @@
   background-position: center;
   background-size: cover; */
   background-color: var(--clr1);
+  position: relative;
 }
 
 .bestSellers .container {
@@ -47,23 +48,35 @@
 }
 
 .bestSellers-sale {
-  background-image: url(../../../assets/bg6.jpg);
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 0;
-  color: white;
+  position: relative;
+  margin-top: 20px;
+}
+
+.bestSellers-sale img {
   border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bestSellers-sale h3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: rgba(255, 255, 255, 0.5);
   color: black;
   padding: 30px;
   border-radius: 5px;
   font-size: 24px;
+}
+
+.bestSellerLoader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bestSellers .mySwiper {
@@ -96,4 +109,22 @@
 
 .bestSellers .swiper-slide div button img {
   width: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .bestSellers-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bestSellers-header div {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .bestSellers-sale {
+    height: 300px;
+  }
 }

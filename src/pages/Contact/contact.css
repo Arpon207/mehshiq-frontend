@@ -1,0 +1,108 @@
+.contactPage .contact-container {
+  width: 70%;
+  margin: 100px auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: fit-content;
+}
+
+.contactPage h3 {
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.contacts,
+.userMessage {
+  padding: 80px;
+}
+
+.contacts > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.contacts > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactPage-socials div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contactPage-socials button {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: var(--clr5);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.userMessage {
+  background-color: var(--clr5);
+  color: white;
+}
+
+.userMessage form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.userMessage form input,
+.userMessage form textarea,
+.userMessage form button {
+  border: none;
+  background: var(--clr4);
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+  border-radius: 5px;
+  resize: none;
+}
+
+.userMessage form input::placeholder,
+.userMessage form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.userMessage form input:focus,
+.userMessage form textarea:focus,
+.userMessage form button:focus {
+  outline: 1px solid rgba(255, 255, 255, 0.486);
+}
+
+@media screen and (max-width: 992px) {
+  .contactPage .contact-container {
+    width: 90%;
+    margin: 50px auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .contacts,
+  .userMessage {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1500px) {
+  .contactPage .contact-container {
+    width: 80%;
+  }
+
+  .contacts,
+  .userMessage {
+    padding: 30px;
+  }
+}

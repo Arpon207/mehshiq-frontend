@@ -1,0 +1,24 @@
+.scrollToTop {
+  background-color: var(--clr8);
+  position: fixed;
+  right: 50px;
+  bottom: -250px;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.scrollToTop img {
+  width: 50px;
+  height: 50px;
+}
+
+.scrollToTop-btn-show {
+  bottom: 50px;
+  opacity: 1;
+}

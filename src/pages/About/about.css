@@ -1,0 +1,165 @@
+.aboutPage h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about-greetings {
+  width: 60%;
+  margin: 100px auto 70px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.about-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-images img {
+  width: 100%;
+}
+
+.about-greetings h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.about-greetings .greetings div p:first-child {
+  margin-bottom: 50px;
+}
+
+.about-greetings div p {
+  font-size: 17px;
+  color: rgb(0, 0, 0, 0.7);
+}
+
+.aboutPage .whatWeOffer h3 {
+  font-size: 24px;
+}
+
+.aboutPage .clientReviews {
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.aboutPage .clientReviews h3 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 24px;
+}
+
+.aboutPage .mySwiper {
+  padding-bottom: 30px;
+  width: 60%;
+}
+
+.aboutPage .swiper-slide {
+  background-color: var(--clr8);
+  padding: 40px 30px;
+  border-radius: 10px;
+}
+
+.aboutPage .review {
+  display: flex;
+  gap: 20px;
+}
+
+.aboutPage .review img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+  border: 1px solid var(--clr9);
+}
+
+.aboutPage .review div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.clientReviewSliderNavigation {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 99;
+}
+
+.clientReviewSliderNavigation button {
+  background-color: var(--clr5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 668px) {
+  .about-images {
+    gap: 20px;
+  }
+
+  .about-greetings {
+    width: 90%;
+    flex-direction: column;
+    margin: 50px auto 70px;
+  }
+
+  .about-greetings div {
+    flex-direction: column;
+  }
+
+  .aboutPage .mySwiper {
+    width: 90%;
+  }
+
+  .aboutPage .swiper-slide {
+    padding: 20px 20px;
+  }
+
+  .aboutPage .review {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .aboutPage .review div p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 669px) and (max-width: 992px) {
+  .about-greetings {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .aboutPage .mySwiper {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 669px) and (max-width: 1200px) {
+  .about-greetings {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1500px) {
+  .about-greetings {
+    width: 70%;
+  }
+}

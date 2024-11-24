@@ -12,7 +12,6 @@
 
 .homeWomensCollection-header h3 {
   font-size: 26px;
-  text-align: center;
   color: black;
 }
 
@@ -44,7 +43,35 @@
   align-items: center;
 }
 
+.mensCollectionLoader {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .homeWomensCollection-container .mySwiper {
   width: 100%;
   padding: 20px 20px 30px !important;
+}
+
+@media screen and (max-width: 1500px) {
+  .homeWomensCollection {
+    width: 90%;
+    margin: 0 auto 100px;
+  }
+
+  .homeWomensCollection-container {
+    grid-template-columns: 1fr;
+  }
+
+  .women-collection-banner {
+    display: none;
+  }
+
+  .homeWomensCollection-container .mySwiper {
+    width: 100%;
+    padding: 20px 0px 30px !important;
+  }
 }

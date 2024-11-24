@@ -173,3 +173,34 @@
 .productPage-share button img {
   height: 100%;
 }
+
+@media screen and (max-width: 668px) {
+  .productPage-quantity {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .productPage-quantity div {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .productPage-quantity button {
+    width: 100%;
+  }
+
+  .productPage-quantity p {
+    width: 100%;
+  }
+
+  .purchase-container {
+    flex-direction: column;
+    align-items: unset;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .productPage-grid {
+    grid-template-columns: 1fr;
+  }
+}

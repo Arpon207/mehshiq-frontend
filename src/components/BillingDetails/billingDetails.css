@@ -1,0 +1,43 @@
+.billingDetails {
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  height: fit-content;
+}
+
+.billingDetails h3 {
+  margin-bottom: 20px;
+}
+
+.billingDetails form label {
+  font-size: 14px;
+}
+
+.billingDetails form input,
+.billingDetails form select {
+  padding: 8px 15px;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #f3f3f3;
+}
+
+.billingDetails form .clientName {
+  display: grid;
+  align-items: center;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.billingDetails form .inputWrapper {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 668px) {
+  .billingDetails form .clientName {
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+}

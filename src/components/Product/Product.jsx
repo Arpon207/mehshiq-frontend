@@ -1,17 +1,21 @@
 import "./product.css";
 import cartIcon from "../../assets/icons/add-to-cart.png";
 import { useState } from "react";
-import bag1 from "../../assets/bags/bag1.jpg";
-import bag2 from "../../assets/bags/bag2.jpg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart, openCart } from "../../redux/cartReducer";
 
 const Product = ({ product }) => {
-  const { images, title, price, _id } = product;
+  const { images, title, price, _id, category } = product;
   const [selectedImag, setSelectedImage] = useState(images[0]?.img);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
-    <div className="product" onClick={() => navigate(`/collections/${_id}`)}>
+    <div
+      className="product"
+      onClick={() => navigate(`/collections/${category}/${_id}`)}
+    >
       <div>
         <img src={selectedImag} alt="" />
       </div>
@@ -39,6 +43,16 @@ const Product = ({ product }) => {
             title="Add to cart"
             onClick={(e) => {
               e.stopPropagation();
+              dispatch(
+                addToCart({
+                  img: images[0]?.img,
+                  title,
+                  price,
+                  _id,
+                  quantity: 1,
+                })
+              );
+              dispatch(openCart());
             }}
           >
             <img src={cartIcon} alt="" />

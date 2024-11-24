@@ -52,7 +52,7 @@
 
 .categories-card-content button {
   border: none;
-  background-color: #5debd7;
+  background-color: rgba(255, 255, 255, 0.5);
   font-size: 15px;
   padding: 10px 14px;
   border-radius: 5px;
@@ -63,4 +63,42 @@
   width: 100%;
   border-radius: 10px;
   filter: brightness(60%);
+}
+
+@media screen and (max-width: 668px) {
+  .categories-card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+  }
+
+  .categories .categories-card {
+    grid-area: unset;
+    height: 250px;
+  }
+
+  .categories-card-container img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .categories-card-content button {
+    font-size: 16px;
+    padding: 5px 8px;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .categories-card-content h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .categories-card-content button {
+    font-size: 16px;
+    padding: 5px 8px;
+    font-weight: 500;
+  }
 }

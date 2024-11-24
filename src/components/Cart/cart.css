@@ -1,0 +1,19 @@
+.cart .overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: all 0.3s;
+}
+
+.cart .overlayShow {
+  opacity: 1;
+}
+
+.cart .overlayHide {
+  opacity: 0;
+  pointer-events: none;
+}

@@ -10,12 +10,12 @@ import instagramIcon from "../../assets/icons/instagram.png";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer>
       <div>
         <div>
-          <h3>About An.gelic</h3>
+          <h3>About Mehshiq</h3>
           <p>
-            Welcome to An.gelic, where sophistication meets functionality in
+            Welcome to Mehshiq, where sophistication meets functionality in
             every stitch. Explore our curated collection of luxurious bags
             crafted to complement your unique style and elevate your everyday
             experiences.
@@ -65,13 +65,13 @@ const Footer = () => {
           <div className="footer-products">
             {products.slice(0, 8).map((item) => (
               <div>
-                <img src={item.image} alt="" />
+                <img src={item?.images[0].img} alt="" />
               </div>
             ))}
           </div>
         </div>
       </div>
-      <p>Copyright © 2023 An.gelic. All Rights Reserved.</p>
+      <p>Copyright © 2023 Mehshiq. All Rights Reserved.</p>
     </footer>
   );
 };

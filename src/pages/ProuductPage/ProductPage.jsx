@@ -21,8 +21,13 @@ import ProductPageTabs from "../../components/ProductPage/ProductPageTabs/Produc
 import ProductDesc from "../../components/ProductPage/ProductDesc/ProductDesc";
 import ProductReviews from "../../components/ProductPage/ProductReviews/ProductReviews";
 import useFetch from "../../hooks/useFetch";
+import RecommendedProducts from "../../components/ProductPage/RecommendedProducts/RecommendedProducts";
+import Loader from "../../components/Loader/Loader";
+import { useDispatch } from "react-redux";
+import { addToCart, openCart } from "../../redux/cartReducer";
 
 const ProductPage = () => {
+  const [counter, setCounter] = useState(1);
   const { id } = useParams();
   const currentPageUrl = window.location.href;
   const { data: product, isLoading } = useFetch(
@@ -30,21 +35,22 @@ const ProductPage = () => {
     `/products/product/${id}`
   );
 
-  const { images, title, price, colors, category } = product || {};
+  const { images, title, price, colors, category, _id } = product || {};
 
   const [selectedTab, setSelectedTab] = useState(1);
 
   const [showPopup, setShowPopup] = useState(false);
 
   const linkCopy = () => {
-    console.log("clicked");
     copy(currentPageUrl);
   };
+
+  const dispatch = useDispatch();
 
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <Loader isLoading={isLoading} />
       ) : (
         <div className="productPage">
           <div className="productPage-grid">
@@ -78,13 +84,39 @@ const ProductPage = () => {
               </div>
               <div className="purchase-container">
                 <div className="productPage-quantity">
-                  <p>1</p>
+                  <p>{counter}</p>
                   <div>
-                    <button className="minus">-</button>
-                    <button className="plus">+</button>
+                    <button
+                      className="minus"
+                      disabled={counter === 1}
+                      onClick={() => setCounter((prev) => prev - 1)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="plus"
+                      onClick={() => setCounter((prev) => prev + 1)}
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
-                <button>ADD TO CART</button>
+                <button
+                  onClick={() => {
+                    dispatch(
+                      addToCart({
+                        img: images[0]?.img,
+                        title,
+                        price,
+                        _id,
+                        quantity: counter,
+                      })
+                    );
+                    dispatch(openCart());
+                  }}
+                >
+                  ADD TO CART
+                </button>
                 <button>BUY NOW</button>
               </div>
               <p className="estimatedDelivery">
@@ -127,9 +159,7 @@ const ProductPage = () => {
           {selectedTab === 1 && <ProductDesc />}
           {selectedTab === 2 && <ProductReviews />}
 
-          <div className="recommenedProducts">
-            {products?.map()}
-          </div>
+          <RecommendedProducts category={category} />
 
           {showPopup && <PlayerPopup setShowPopup={setShowPopup} />}
         </div>

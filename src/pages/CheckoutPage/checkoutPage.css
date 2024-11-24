@@ -1,0 +1,110 @@
+.checkoutPage {
+  background-color: #f3f3f3;
+  padding: 0px 0 100px;
+}
+
+.checkoutPage h1 {
+  margin-bottom: 20px;
+}
+
+.checkoutPage-container {
+  margin: 0 auto;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 50px;
+}
+
+.checkoutPage-container button {
+  transition: 0.3s;
+}
+
+.checkoutPage-container button:hover {
+  background-color: black;
+}
+
+.checkoutPage-container [type="radio"] {
+  accent-color: var(--clr4);
+}
+
+.yourProducts h3 {
+  margin-bottom: 10px;
+}
+
+.orderedProducts-header {
+  margin-bottom: 5px;
+}
+
+.orderedProducts-header,
+.orderedProduct {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+}
+
+.orderedProduct p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.orderedProduct p:last-child {
+  justify-self: flex-end;
+}
+
+.paymentMethod h3 {
+  margin-bottom: 10px;
+}
+
+.paymentMethod div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkout-termsCondition p {
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 20px;
+}
+
+.checkout-termsCondition span {
+  text-decoration: underline;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.checkout-termsCondition span:hover {
+  color: black;
+}
+
+.checkout-termsCondition div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .checkoutPage-container {
+    width: 90% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .checkoutPage-container {
+    width: 90%;
+    grid-template-columns: 60% 40%;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .checkoutPage-container {
+    width: 80%;
+    grid-template-columns: 60% 40%;
+  }
+}

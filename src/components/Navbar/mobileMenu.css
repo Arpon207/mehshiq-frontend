@@ -1,0 +1,136 @@
+.mobileMenu .menu-btn {
+  width: 25px;
+  display: none;
+}
+
+/* forMobile */
+
+@media screen and (max-width: 992px) {
+  .navbar .mobileMenu-container {
+    position: fixed;
+    width: 300px;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr8);
+    gap: 20px;
+    padding: 40px;
+    z-index: 9999;
+    color: white;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar .mobileMenu .overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    z-index: 10;
+    transition: all 0.3s;
+  }
+
+  .navbar .mobileMenu .overlayShow {
+    opacity: 1;
+  }
+
+  .navbar .mobileMenu .overlayHide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .navbar .mobileMenu-container h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .navbar .mobileMenu-container .mobileMenu-close {
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: 40px;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  .mobileMenu hr {
+    display: block;
+  }
+
+  .navbar .mobileMenu-container a {
+    font-size: 18px;
+    color: white;
+  }
+
+  .navbar .mobileMenu-collections-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar .mobileMenu-collections-nav button {
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar .mobileMenu-collections-dropdown {
+    background-color: var(--clr9);
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .navbar .mobileMenu-collections-dropdown div {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .navbar .mobileMenu-collections-dropdown a {
+    color: black;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+
+  .navbar .mobileMenu-container .authentication-link {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .navbar .mobileMenu-container .authentication-link a {
+    margin-right: 0;
+  }
+
+  .navbar .mobileMenu-container .authentication-link span {
+    width: 1px;
+    height: 15px;
+    background-color: white;
+    display: inline-block;
+  }
+
+  .navbar .left .nav-open {
+    left: 0;
+  }
+
+  .navbar .left .menu-btn {
+    display: block;
+  }
+}

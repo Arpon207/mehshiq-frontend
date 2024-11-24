@@ -1,54 +1,84 @@
 import "./banner.css";
-import bag1 from "../../../assets/bags/bag1.jpg";
-import bag2 from "../../../assets/bags/bag2.jpg";
-import bag3 from "../../../assets/bags/bag3.jpg";
-import bag4 from "../../../assets/bags/bag4.jpg";
-import female from "../../../assets/model-female.png";
-import male from "../../../assets/model-male.png";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
+
+import bannerImage1 from "../../../assets/Banner/bannerThree1.jpg";
+import bannerImage2 from "../../../assets/Banner/bannerThree2.jpg";
+import bannerImage3 from "../../../assets/Banner/bannerThree3.jpg";
+import bannerImage4 from "../../../assets/Banner/bannerThree4.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/collections");
+  };
   return (
-    <div className="banner-container">
-      <div className="bannerCard1">
-        <div className="bannerDesc container">
-          <h1>AN.GELIC</h1>
-          <h3>Elevate Your Style with Exquisite Bags</h3>
-          <p>
-            Welcome to An.gelic, where sophistication meets functionality in
-            every stitch. Explore our curated collection of luxurious bags
-            crafted to complement your unique style and elevate your everyday
-            experiences. From sleek leather briefcases exuding professionalism
-            to chic backpacks blending fashion with practicality, each piece is
-            meticulously designed to seamlessly integrate into your lifestyle.
-            Indulge in the epitome of elegance and functionality with LuxeCarry,
-            where your journey begins with the perfect bag.
-          </p>
-        </div>
-      </div>
-      <div className="bannerCard2 model">
-        <h3>Women Bag</h3>
-        <img src={female} alt="" />
-      </div>
-      <div className="bannerCard3 model">
-        <h3>Men Bag</h3>
-        <img src={male} alt="" />
-      </div>
-      <div className="bannerCard4">
-        <div>
-          <h3>BIG SALE </h3>
-          <p>ON WOMEN SUMMER COLLECTION</p>
-          <h3>20% OFF</h3>
-        </div>
-      </div>
-      <div className="bannerCard5">
-        <img src={bag1} alt="" />
-        <img src={bag2} alt="" />
-        <img src={bag3} alt="" />
-        <img src={bag4} alt="" />
-        <div>
-          <button>Explore Our Collections</button>
-        </div>
-      </div>
+    <div className="banner">
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={0}
+        loop={true}
+        pagination={{
+          dynamicBullets: true,
+        }}
+        autoplay={{
+          delay: 4500,
+          disableOnInteraction: false,
+          waitForTransition: true,
+        }}
+        effect="fade"
+        speed={800}
+        pauseOnMouseEnter={true}
+        modules={[Navigation, Pagination, Autoplay, EffectFade]}
+        className="mySwiper"
+      >
+        <SwiperSlide className="first-slide">
+          <img src={bannerImage1} alt="" />
+          <div>
+            <h2>MEHSHIQ</h2>
+            <h3>Elevate Your Style with Exquisite Bags</h3>
+            <button onClick={() => handleNavigate()}>
+              Explore Our Collection
+            </button>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="second-slide">
+          <img src={bannerImage3} alt="" />
+          <div>
+            <h2>WOMEN'S HANDBAG</h2>
+            <h3>Find your best match</h3>
+            <button onClick={() => handleNavigate()}>
+              Explore Our Collection
+            </button>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="third-slide">
+          <img src={bannerImage2} alt="" />
+          <div>
+            <h2>PICK YOUR STYLE</h2>
+            <h3>Pick your fovourite bag from our collection.</h3>
+            <button onClick={() => handleNavigate()}>
+              Explore Our Collection
+            </button>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide className="fourth-slide">
+          <img src={bannerImage4} alt="" />
+          <div>
+            <h2>BEST TOTE'S COLLECTION</h2>
+            <h3>Explore our tote collection</h3>
+            <button onClick={() => handleNavigate()}>
+              Explore Our Collection
+            </button>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };

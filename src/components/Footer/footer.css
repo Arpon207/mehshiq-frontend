@@ -74,3 +74,14 @@ footer > p {
   text-align: center;
   font-weight: 500;
 }
+
+@media screen and (max-width: 992px) {
+  footer {
+    padding: 50px 10% 20px;
+    background-color: #f0efff;
+  }
+
+  footer > div {
+    grid-template-columns: 1fr;
+  }
+}

@@ -4,8 +4,22 @@ import { useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
 import { products } from "../../../constants/products";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
-const Categories = () => {
+const categories = [
+  { name: "All Bags", path: "" },
+  { name: "Shoulder Bags", path: "shoulder-bags" },
+  { name: "Tote Bags", path: "tote-bags" },
+  { name: "Hand Bags", path: "hand-bags" },
+  { name: "Backpacks", path: "backpacks" },
+  { name: "School Bags", path: "school-bags" },
+  { name: "Crossbody Bags", path: "crossbody-bags" },
+  { name: "Bucket Bags", path: "bucket-bags" },
+  { name: "Mini Bags", path: "mini-bags" },
+  { name: "Sync Set", path: "sync-bet" },
+];
+
+const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
   const Min = Math.min(...products.map((product) => product.price));
   const Max = Math.max(...products.map((product) => product.price));
   const [minValue, set_minValue] = useState(Min);
@@ -14,21 +28,38 @@ const Categories = () => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
   };
+  const handlePriceRange = () => {
+    setMinMax({ min: minValue, max: maxValue });
+    setFilterOpen(false);
+    refetch();
+  };
   return (
     <>
       <div className="mainCategories">
-        <h3>All Categories</h3>
+        <h3>
+          All Categories{" "}
+          <button onClick={() => setFilterOpen(false)}>
+            <RxCross2 />
+          </button>
+        </h3>
         <hr />
         <div>
-          <NavLink>Shoulder Bags</NavLink>
-          <NavLink>Tote Bags</NavLink>
-          <NavLink>Hand Bags</NavLink>
-          <NavLink>Backpacks</NavLink>
-          <NavLink>School Bags</NavLink>
-          <NavLink>Crossbody Bags</NavLink>
-          <NavLink>Bucket Bags</NavLink>
-          <NavLink>Mini Bags</NavLink>
-          <NavLink>Sync Set</NavLink>
+          {categories.map(({ path, name }, i) => (
+            <NavLink
+              to={path}
+              onClick={() => {
+                setCurrentPage(1);
+                setFilterOpen(false);
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              {name}
+            </NavLink>
+          ))}
         </div>
       </div>
       <div className="filterByPrice">
@@ -49,7 +80,7 @@ const Categories = () => {
           <p>
             Price: BDT {minValue} from BDT {maxValue}
           </p>
-          <button>
+          <button onClick={() => handlePriceRange()}>
             Filter <FaArrowCircleRight />
           </button>
         </div>

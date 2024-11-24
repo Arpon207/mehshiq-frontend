@@ -1,122 +1,147 @@
-.banner-container {
-  min-height: calc(100vh - 80px);
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: minmax(180px, auto);
-  gap: 10px;
-  width: 95%;
-  margin: 0 auto 0;
+.banner {
+  min-height: 800px;
 }
 
-.banner-container > div {
+.banner .swiper {
+  height: 800px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner .swiper-slide {
+  position: relative;
+}
+
+.banner .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner .swiper-slide div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banner .swiper-slide div h2 {
+  font-size: 62px;
+  font-weight: 800;
+}
+
+.banner .swiper-slide-active.first-slide h2,
+.banner .swiper-slide-active.third-slide h2,
+.banner .swiper-slide-active.first-slide h3,
+.banner .swiper-slide-active.third-slide h3 {
+  animation: title-animation1 3s forwards;
+}
+
+.banner .swiper-slide-active.second-slide h2,
+.banner .swiper-slide-active.fourth-slide h2,
+.banner .swiper-slide-active.second-slide h3,
+.banner .swiper-slide-active.fourth-slide h3 {
+  animation: title-animation2 3s forwards;
+}
+
+.banner .swiper-slide-active button {
+  animation: button-animation 4s forwards;
+}
+
+.banner .swiper-pagination-bullet {
+  background: none;
+  border: 2px solid white !important;
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+}
+
+.banner .swiper-pagination-bullet-active {
+  background-color: white;
+  border: none;
+}
+
+@keyframes title-animation1 {
+  0% {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes title-animation2 {
+  0% {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes button-animation {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.banner .swiper-slide button {
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
   border-radius: 5px;
 }
 
-.banner-container .bannerCard1 {
-  background-color: var(--clr1);
-  grid-column: span 4;
-  grid-row: span 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.banner .first-slide div,
+.banner .third-slide div {
+  left: 10%;
 }
 
-.banner-container .bannerDesc h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+.banner .second-slide div,
+.banner .fourth-slide div {
+  right: 10%;
 }
 
-.banner-container .bannerDesc h3 {
-  margin-bottom: 20px;
-  font-size: 22px;
-}
+@media screen and (max-width: 668px) {
+  .banner {
+    min-height: 300px;
+  }
 
-.banner-container .bannerDesc p {
-  width: 80%;
-  text-align: justify;
-}
+  .banner .swiper {
+    height: 300px;
+  }
 
-.banner-container .bannerCard2 {
-  background-color: #fcede6;
-  grid-column: span 2;
-  grid-row: span 2;
-}
+  .banner .swiper-slide div h2 {
+    font-size: 28px;
+    font-weight: 800;
+  }
 
-.model {
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-}
+  .banner .swiper-slide div h3 {
+    font-size: 16px;
+    font-weight: 800;
+  }
 
-.model h3 {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 26px;
-}
-
-.banner-container .bannerCard3 {
-  background-color: #fcede6;
-  grid-column: span 2;
-}
-
-.bannerCard3 img {
-  max-width: 250px;
-}
-
-.banner-container .bannerCard4 {
-  background-color: #f3e3bf;
-  grid-column: span 1;
-  padding: 20px;
-}
-
-.bannerCard4 div {
-  border: 2px solid black;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
-  padding: 20px;
-}
-
-.bannerCard4 h3 {
-  font-size: 24px;
-}
-
-.banner-container .bannerCard5 {
-  background-color: #f3e3bf;
-  grid-column: span 3;
-}
-
-.bannerCard5 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-  position: relative;
-}
-
-.bannerCard5 div {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #f0efff71;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bannerCard5 button {
-  border: none;
-  padding: 8px 20px;
-  background-color: #f0efff;
-  font-size: 18px;
-  font-weight: 500;
-  border-radius: 2px;
-}
-
-.bannerCard5 img {
-  width: 100%;
-  height: 100%;
+  .banner .swiper-slide button {
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+  }
 }

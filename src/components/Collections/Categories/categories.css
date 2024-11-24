@@ -1,10 +1,23 @@
 .mainCategories {
-  background-color: #5debd7;
+  background-color: #092635;
   padding: 50px;
 }
 
 .mainCategories h3 {
   font-size: 24px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainCategories h3 button {
+  color: white;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
 }
 
 .mainCategories hr {
@@ -19,7 +32,7 @@
 }
 
 .mainCategories div a {
-  color: black;
+  color: white;
   font-weight: 600;
   font-size: 18px;
 }
@@ -98,4 +111,24 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .mainCategories {
+    padding: 20px;
+  }
+
+  .mainCategories h3 button {
+    display: block;
+  }
+
+  .filterByPrice {
+    padding: 20px;
+  }
+
+  .filterByPrice .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

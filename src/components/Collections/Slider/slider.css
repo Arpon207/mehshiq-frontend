@@ -19,7 +19,7 @@
   bottom: 0;
   height: fit-content;
   width: fit-content;
-  font-size: 52px;
+  font-size: 32px;
   color: rgb(255, 255, 255, 0.9);
   letter-spacing: 1px;
   font-weight: 800;
@@ -42,4 +42,20 @@
 .slider .swiper-pagination-bullet-active {
   background-color: white;
   border: none;
+}
+
+@media screen and (max-width: 668px) {
+  .slider h3 {
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 669px) and (max-width: 992px) {
+  .slider h3 {
+    font-size: 26px;
+    text-align: center;
+    padding: 20px;
+  }
 }

@@ -55,3 +55,31 @@
 .product .productInfo button img {
   width: 25px;
 }
+
+@media screen and (max-width: 668px) {
+  .product {
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .product .productInfo div p:first-child {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .product .productInfo div p:last-child {
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  .product .product-images img {
+    width: 30px;
+    border-radius: 3px;
+  }
+
+  .product .productInfo button img {
+    width: 20px;
+  }
+}

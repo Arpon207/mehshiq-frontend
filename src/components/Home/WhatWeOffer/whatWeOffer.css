@@ -9,7 +9,7 @@
 }
 
 .whatWeOffer .whatWeOffer-container {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@
 }
 
 .whatWeOffer-container .special1 {
-  background-color: var(--clr1);
+  background-color: var(--clr3);
 }
 
 .whatWeOffer-container .special2 {
@@ -37,7 +37,7 @@
 }
 
 .whatWeOffer-container .special3 {
-  background-color: var(--clr3);
+  background-color: var(--clr6);
 }
 
 .whatWeOffer-container div p:first-child {
@@ -47,4 +47,21 @@
 
 .whatWeOffer-container div img {
   width: 100px;
+}
+
+@media screen and (max-width: 668px) {
+  .whatWeOffer .whatWeOffer-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .whatWeOffer .whatWeOffer-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

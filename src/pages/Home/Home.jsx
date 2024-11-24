@@ -1,30 +1,51 @@
 import BestSellers from "../../components/Home/BestSellers/BestSellers";
-import Banner from "../../components/Home/Banner/Banner";
 import Categories from "../../components/Home/Categories/Categories";
 import NewArrivals from "../../components/Home/NewArrivals/NewArrivals";
 import "./home.css";
 import HomeMensCollection from "../../components/Home/HomeMensCollection/HomeMensCollection";
 import HomeWomensCollection from "../../components/Home/HomeWomensCollection/HomeWomensCollection";
 import WhatWeOffer from "../../components/Home/WhatWeOffer/WhatWeOffer";
-import useFetch from "../../hooks/useFetch";
+import Banner from "../../components/Home/Banner/Banner";
+import upArrow from "../../assets/icons/up-arrow (1).png";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-  const { data, isLoading } = useFetch("products", "/products/all");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrolltoTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
   return (
     <>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="home">
-          <Banner />
-          <NewArrivals products={data} />
-          <Categories />
-          <BestSellers products={data} />
-          <HomeWomensCollection products={data} />
-          <HomeMensCollection products={data} />
-          <WhatWeOffer />
-        </div>
-      )}
+      <div className="home">
+        <Banner />
+        <NewArrivals />
+        <Categories />
+        <BestSellers />
+        <HomeWomensCollection />
+        <HomeMensCollection />
+        <WhatWeOffer />
+        <button
+          className={`scrollToTop ${
+            scrollY > 500 ? "scrollToTop-btn-show" : "scrollToTop-btn-hide"
+          }`}
+          onClick={() => scrolltoTop()}
+        >
+          <img src={upArrow} alt="" />
+        </button>
+      </div>
     </>
   );
 };
