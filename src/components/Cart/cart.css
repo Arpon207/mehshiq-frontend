@@ -17,3 +17,8 @@
   opacity: 0;
   pointer-events: none;
 }
+
+.cart .cart-btn {
+  display: flex;
+  align-items: center;
+}

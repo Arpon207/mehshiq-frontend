@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="action-btns">
           <Cart />
           <button className="nav-login-btn">
-            <img src={login_icon} alt="" className="login-btn" />
+            <img src={login_icon} alt="" className="login-btn" /> Login
           </button>
         </div>
       </div>

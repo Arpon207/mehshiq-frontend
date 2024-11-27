@@ -1,5 +1,5 @@
 import "./homeMensCollection.css";
-import menBanner from "../../../assets/men-banner.jpeg";
+import backpacks from "../../../assets/backpacks.jpeg";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -18,7 +18,7 @@ const HomeMensCollection = () => {
   const { data: { data: products } = {}, isLoading } = useQuery({
     queryKey: ["mensProducts"],
     queryFn: () => {
-      return makeRequest.get(`/products/mens`);
+      return makeRequest.get(`/products/backpacks`);
     },
     enabled: inView,
   });
@@ -28,7 +28,7 @@ const HomeMensCollection = () => {
   return (
     <div className="homeMensCollection" ref={ref}>
       <div className="homeMensCollection-header">
-        <h3>Mens Collection</h3>
+        <h3>Backpacks Collection</h3>
         <div>
           <button className="MensPrevElBtn" onClick={() => swiper.slidePrev()}>
             <GrFormPreviousLink />
@@ -40,7 +40,7 @@ const HomeMensCollection = () => {
       </div>
       <div className="homeMensCollection-container">
         <div className="men-collection-banner">
-          <img src={menBanner} alt="" />
+          <img src={backpacks} alt="" />
         </div>
         {isLoading ? (
           <div className="mensCollectionLoader">

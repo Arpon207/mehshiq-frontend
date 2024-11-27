@@ -320,5 +320,174 @@
         "id": "product_images/r9msynx86zcwi1oakgys"
       }
     ]
+  },
+
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1500,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      }
+    ],
+    "sold": 95
+  },
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1800,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      }
+    ],
+    "sold": 92
+  },
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1900,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      }
+    ],
+    "sold": 77
+  },
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1500,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      }
+    ],
+    "sold": 88
+  },
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1500,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      }
+    ],
+    "sold": 91
+  },
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1500,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      }
+    ],
+    "sold": 79
+  },
+  {
+    "title": "Arctic Hunter Bagpack",
+    "category": "Backpacks",
+    "price": 1500,
+    "discount": 0,
+    "slug": "hand Bag - shoulder bags",
+    "colors": ["black", "brown", "white"],
+    "video": "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4",
+    "images": [
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag2_avsf61.webp",
+        "id": "product_images/r9msynx86zcwi1oakgys"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag1_fggymh.png",
+        "id": "product_images/agve1xay2zhytm7wmbjj"
+      },
+      {
+        "img": "https://res.cloudinary.com/danuatfvs/image/upload/v1732700185/bag6_e8aht7.jpg",
+        "id": "product_images/j6jeqoyuwxewbmxkdq3q"
+      }
+    ],
+    "sold": 55
   }
 ]

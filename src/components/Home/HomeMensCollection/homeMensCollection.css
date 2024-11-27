@@ -35,12 +35,14 @@
 
 .men-collection-banner img {
   border-radius: 10px;
+  width: 100%;
 }
 
 .homeMensCollection-container {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 25% 75%;
   align-items: center;
+  gap: 20px;
 }
 
 .homeMensCollection-container .mySwiper {

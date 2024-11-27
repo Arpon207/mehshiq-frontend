@@ -1,3 +1,8 @@
+.navbar .right .search-btn {
+  display: flex;
+  align-items: center;
+}
+
 .navbar .right .search-btn img {
   width: 20px;
 }

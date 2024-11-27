@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./categories.css";
 import { useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
@@ -24,10 +24,15 @@ const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
   const Max = Math.max(...products.map((product) => product.price));
   const [minValue, set_minValue] = useState(Min);
   const [maxValue, set_maxValue] = useState(Max);
+  const location = useLocation();
+
+  console.log(location.pathname.length);
+
   const handleInput = (e) => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
   };
+
   const handlePriceRange = () => {
     setMinMax({ min: minValue, max: maxValue });
     setFilterOpen(false);
@@ -56,6 +61,11 @@ const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
                   behavior: "smooth",
                 });
               }}
+              className={`${
+                (location.pathname === `/collections/${path}` ||
+                  (location.pathname === "/collections" && path === "")) &&
+                "category-selected"
+              }`}
             >
               {name}
             </NavLink>

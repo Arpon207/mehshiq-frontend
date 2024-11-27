@@ -37,6 +37,23 @@
   font-size: 18px;
 }
 
+.category-selected {
+  position: relative;
+}
+
+.category-selected::after {
+  content: " ";
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
 .filterByPrice {
   margin-top: 40px;
 }
