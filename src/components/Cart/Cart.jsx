@@ -7,6 +7,8 @@ import { closeCart, openCart } from "../../redux/cartReducer";
 
 const Cart = () => {
   const { isCartOpen } = useSelector((state) => state.cartVisibility);
+  const { products, subQuantity } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const Cart = () => {
       <div className="nav-cart">
         <button className="cart-btn" onClick={() => dispatch(openCart())}>
           <img src={cart_icon} alt="" />
-          <span>{/* {subtotal().quantity} */}</span>
+          <span>{subQuantity}</span>
         </button>
       </div>
       <div className="cartSlider-container">

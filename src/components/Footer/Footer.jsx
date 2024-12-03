@@ -63,8 +63,8 @@ const Footer = () => {
         <div>
           <h3>May you like</h3>
           <div className="footer-products">
-            {products.slice(0, 8).map((item) => (
-              <div>
+            {products.slice(0, 8).map((item, i) => (
+              <div key={i}>
                 <img src={item?.images[0].img} alt="" />
               </div>
             ))}

@@ -37,6 +37,30 @@
   margin: 20px 0;
 }
 
+.cartslider-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  gap: 20px;
+}
+
+.cartslider-empty img {
+  width: 80px;
+}
+
+.cartslider-empty h3 {
+  font-weight: 500;
+}
+
+.cartslider-empty button {
+  background-color: var(--clr5);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+}
+
 .cartSlider .cart-product {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;

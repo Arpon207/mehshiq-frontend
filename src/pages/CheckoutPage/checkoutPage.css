@@ -38,7 +38,7 @@
 .orderedProducts-header,
 .orderedProduct {
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 70% 30%;
   align-items: center;
 }
 
@@ -51,8 +51,15 @@
   font-weight: 500;
 }
 
-.orderedProduct p:last-child {
+.orderedProduct p:last-child,
+.orderedProducts-header p:last-child {
   justify-self: flex-end;
+}
+
+.shipping div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .paymentMethod h3 {

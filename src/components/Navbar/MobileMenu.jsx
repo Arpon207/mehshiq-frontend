@@ -28,18 +28,10 @@ const links = {
       title: "Mini Bags",
     },
   ],
-  men: [
+  backpacks: [
     {
-      path: "",
-      title: "Backpacks",
-    },
-    {
-      path: "",
-      title: "Wallet",
-    },
-    {
-      path: "",
-      title: "Crossbody Bag",
+      path: "/collections/backpacks",
+      title: "All Backpacks",
     },
   ],
 };
@@ -47,7 +39,7 @@ const links = {
 const MobileMenu = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [collectionsNavOpen, setCollectionsNavOpen] = useState({
-    men: false,
+    backpacks: false,
     women: false,
   });
 
@@ -85,7 +77,7 @@ const MobileMenu = () => {
           <button
             onClick={() =>
               setCollectionsNavOpen({
-                men: false,
+                backpacks: false,
                 women: !collectionsNavOpen.women,
               })
             }
@@ -112,24 +104,28 @@ const MobileMenu = () => {
             to={"/collections"}
             className={"collections-nav"}
           >
-            Men Collections
+            Backpacks
           </NavLink>
           <button
             onClick={() =>
               setCollectionsNavOpen({
-                men: !collectionsNavOpen.men,
+                backpacks: !collectionsNavOpen.backpacks,
                 women: false,
               })
             }
           >
-            {collectionsNavOpen.men ? <HiOutlineMinus /> : <HiOutlinePlus />}
+            {collectionsNavOpen.backpacks ? (
+              <HiOutlineMinus />
+            ) : (
+              <HiOutlinePlus />
+            )}
           </button>
         </li>
-        {collectionsNavOpen.men && (
+        {collectionsNavOpen.backpacks && (
           <div className="mobileMenu-collections-dropdown">
             <div>
-              <strong>Men</strong>
-              {links.men.map(({ path, title }, i) => (
+              <strong>Backpacks</strong>
+              {links.backpacks.map(({ path, title }, i) => (
                 <Link to={path} key={i} onClick={() => setNavOpen(false)}>
                   {title}
                 </Link>

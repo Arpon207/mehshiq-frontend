@@ -1,13 +1,16 @@
 import "./productImages.css";
 
 import { FaRegCirclePlay } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProductImages = ({ setShowPopup, images }) => {
   const [selectedImage, setSelectedImage] = useState({
     type: "image",
     image: images[0]?.img,
   });
+  useEffect(() => {
+    setSelectedImage({ ...selectedImage, image: images[0]?.img });
+  }, [images]);
   return (
     <div className="productPage-images">
       <div className="div1">

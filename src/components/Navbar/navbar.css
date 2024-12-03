@@ -47,7 +47,7 @@
   display: flex;
   position: absolute;
   background-color: white;
-  width: fit-content;
+  width: 400px;
   left: 0;
   top: 100%;
   z-index: 99;

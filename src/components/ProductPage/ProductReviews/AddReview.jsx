@@ -1,17 +1,19 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoStarFill } from "react-icons/go";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { RxCross1 } from "react-icons/rx";
 import Rating from "react-rating";
 import imageCompression from "browser-image-compression";
+import { makeRequest } from "../../../axios";
+import { useParams } from "react-router-dom";
 
-const AddReview = () => {
+const AddReview = ({ refetch }) => {
+  const { id } = useParams();
   const fileInputRef = useRef();
-  const handleReviewSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  const formRef = useRef();
   const [previewImages, setPreviewImages] = useState([]);
+  const [rating, setRating] = useState(0);
+  const [isLoading, setIsloading] = useState(false);
 
   const handleOnChange = async (file) => {
     if (!file) return;
@@ -24,10 +26,8 @@ const AddReview = () => {
 
     const compressedFile = await imageCompression(file, option);
 
-    console.log(`compressedFile size ${compressedFile.size / 1024} kb`);
-
     const reader = new FileReader();
-    reader.readAsDataURL(compressedFile);
+    reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewImages([...previewImages, reader.result]);
     };
@@ -41,33 +41,62 @@ const AddReview = () => {
     setPreviewImages(newArray);
   };
 
+  const handleReviewSubmit = async (e) => {
+    setIsloading(true);
+    e.preventDefault();
+    const review = e.target.review.value;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const reviewData = {
+      product: id,
+      review,
+      name,
+      email,
+      rating,
+      previewImages,
+    };
+    const { data } = await makeRequest.post("/reviews/addReview", reviewData);
+    if (data) {
+      refetch();
+      formRef.current.reset();
+      setPreviewImages([]);
+      setRating(0);
+      setIsloading(false);
+    }
+    setIsloading(false);
+  };
+
+  console.log(isLoading);
+
   return (
     <div className="addReview">
       <h3>Add Review</h3>
       <p>
         Your email address will not be published. Required fields are marked
       </p>
-      <form action="" onSubmit={handleReviewSubmit}>
+      <form ref={formRef} action="" onSubmit={handleReviewSubmit}>
         <div className="rating-input">
           <label htmlFor="rating">Your rating : </label>
           <Rating
             emptySymbol={<GoStarFill className="clr-black" />}
             fullSymbol={<GoStarFill className="clr-orange" />}
-            initialRating={0}
+            initialRating={rating}
+            onClick={(data) => setRating(data)}
+            required
           />
         </div>
         <div className="inputWrapper">
           <label htmlFor="review">Your review *</label>
-          <textarea name="review" id="review" rows={5}></textarea>
+          <textarea name="review" id="review" rows={5} required></textarea>
         </div>
         <div className="clientInfo">
           <div className="inputWrapper">
             <label htmlFor="name">Your name *</label>
-            <input type="text" name="name" id="name" />
+            <input type="text" name="name" id="name" required />
           </div>
           <div className="inputWrapper">
-            <label htmlFor="email">Your name *</label>
-            <input type="email" name="email" id="email" />
+            <label htmlFor="email">Your email *</label>
+            <input type="email" name="email" id="email" required />
           </div>
         </div>
         <div className="inputWrapper upload-pictures">
@@ -77,14 +106,19 @@ const AddReview = () => {
           <div>
             <div>
               <button
-                onClick={() => fileInputRef.current.click()}
+                type="button"
+                onClick={(e) => {
+                  fileInputRef.current.click();
+                }}
                 disabled={previewImages.length > 2}
               >
                 <MdOutlineFileUpload />
               </button>
               <input
                 type="file"
-                onChange={(e) => handleOnChange(e.target.files[0])}
+                onChange={(e) => {
+                  handleOnChange(e.target.files[0]);
+                }}
                 name=""
                 id="picture"
                 ref={fileInputRef}
@@ -92,7 +126,7 @@ const AddReview = () => {
             </div>
             {previewImages.length > 0 &&
               previewImages.map((image, i) => (
-                <div className="uploaded-pictures">
+                <div key={i} className="uploaded-pictures">
                   <button onClick={() => handleDelete(i)}>
                     <RxCross1 />
                   </button>
@@ -102,7 +136,7 @@ const AddReview = () => {
           </div>
         </div>
         <button className="submit-btn" type="submit">
-          Submit
+          {isLoading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
   subtotal: 0,
+  subQuantity: 0,
 };
 
 const cartState = {
@@ -55,6 +56,7 @@ export const cartSlice = createSlice({
         quantity += item.quantity;
       });
       state.subtotal = total;
+      state.subQuantity = quantity;
     },
   },
 });

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./cartSlider.css";
+import emptyCart from "../../assets/icons/abandoned-cart.png";
 import {
   closeCart,
   removeItem,
@@ -32,26 +33,41 @@ const CartSlider = ({ isOpen, setIsOpen }) => {
             </div>
             <hr />
           </div>
-          <div className="cart-products">
-            {products.map(({ title, price, quantity, img, _id }, i) => (
-              <div className="cart-product" key={i}>
-                <img src={img} alt="" />
-                <div>
-                  <strong>{title}</strong>
-                  <p>
-                    {quantity} * {price}$
-                  </p>
-                </div>
+          {products.length > 0 ? (
+            <div className="cart-products">
+              {products.map(({ title, price, quantity, img, _id }, i) => (
+                <div className="cart-product" key={i}>
+                  <img src={img} alt="" />
+                  <div>
+                    <strong>{title}</strong>
+                    <p>
+                      {quantity} * {price}$
+                    </p>
+                  </div>
 
-                <button
-                  className="nav-cart-delete-btn"
-                  onClick={() => dispatch(removeItem({ _id }))}
-                >
-                  <RxCross2 />
-                </button>
-              </div>
-            ))}
-          </div>
+                  <button
+                    className="nav-cart-delete-btn"
+                    onClick={() => dispatch(removeItem({ _id }))}
+                  >
+                    <RxCross2 />
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className=" cartslider-empty">
+              <img src={emptyCart} alt="" />
+              <h3>Your cart is empty!</h3>
+              <button
+                onClick={() => {
+                  navigate("/collections");
+                  dispatch(closeCart());
+                }}
+              >
+                Explore Our Collection
+              </button>
+            </div>
+          )}
         </div>
         <div className="cartSlider-bottom">
           <div className="subtotal">

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./productPage.css";
 import { products } from "../../constants/products";
 import Rating from "react-rating";
@@ -29,6 +29,7 @@ import { addToCart, openCart } from "../../redux/cartReducer";
 const ProductPage = () => {
   const [counter, setCounter] = useState(1);
   const { id } = useParams();
+  const navigate = useNavigate();
   const currentPageUrl = window.location.href;
   const { data: product, isLoading } = useFetch(
     "product",
@@ -117,7 +118,21 @@ const ProductPage = () => {
                 >
                   ADD TO CART
                 </button>
-                <button>BUY NOW</button>
+                <button
+                  onClick={() =>
+                    navigate("/checkout", {
+                      state: {
+                        img: images[0]?.img,
+                        title,
+                        price,
+                        _id,
+                        quantity: counter,
+                      },
+                    })
+                  }
+                >
+                  BUY NOW
+                </button>
               </div>
               <p className="estimatedDelivery">
                 <strong>Estimated Delivery:</strong> Friday, May 31 - Tuesday,

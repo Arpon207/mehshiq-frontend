@@ -1,35 +1,18 @@
 import { useForm } from "react-hook-form";
 import "./billingDetails.css";
-import { Country, State, City } from "country-state-city";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-const BillingDetails = ({ onSubmit }) => {
-  const [divisions, setDivisions] = useState([]);
-  const [districts, setDistricts] = useState([]);
-  const [upazillas, setUpazillas] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://bdapis.com/api/v1.1/divisions")
-      .then((res) => setDivisions(res.data.data));
-  }, []);
-
-  useEffect(() => {}, [divisions]);
-
-  const handleDivision = (e) => {
-    const division = e.target.value;
-    axios
-      .get(`https://bdapis.com/api/v1.1/division/${division}`)
-      .then((res) => setDistricts(res.data.data));
-  };
-
-  const handleDistrict = (e) => {
-    const selectedDistrict = e.target.value;
-    const district = districts.find((dis) => dis.district === selectedDistrict);
-    console.log(district);
-    setUpazillas(district.upazilla);
-  };
+const BillingDetails = ({ onSubmit, division, setDivision }) => {
+  const divisions = [
+    "Dhaka",
+    "Chattogram",
+    "Barishal",
+    "Khulna",
+    "Rangpur",
+    "Rajshahi",
+    "Sylhet",
+    "Mymensingh",
+  ];
 
   const {
     register,
@@ -91,38 +74,21 @@ const BillingDetails = ({ onSubmit }) => {
           <select
             name="divisions"
             id="divisions"
-            onChange={(e) => handleDivision(e)}
+            value={division}
+            onChange={(e) => setDivision(e.target.value)}
           >
             {divisions.map((div, i) => (
-              <option value={div.division}>{div.division}</option>
+              <option value={div}>{div}</option>
             ))}
           </select>
         </div>
         <div className="inputWrapper">
-          <label htmlFor="district">District</label>
-          <select
-            name="district"
-            id="district"
-            onChange={(e) => handleDistrict(e)}
-          >
-            {districts.map((dis, i) => (
-              <option value={dis.district}>{dis.district}</option>
-            ))}
-          </select>
-        </div>
-        <div className="inputWrapper">
-          <label htmlFor="upazilla">Upazilla</label>
-          <select
-            name="upazilla"
-            id="upazilla"
-            // onChange={(e) => handleDivision(e)}
-          >
-            {upazillas.map((upazilla, i) => (
-              <option key={i} value={upazilla}>
-                {upazilla}
-              </option>
-            ))}
-          </select>
+          <label htmlFor="area">Area</label>
+          <input
+            id="area"
+            type="text"
+            {...register("area", { required: true })}
+          />
         </div>
       </form>
     </div>

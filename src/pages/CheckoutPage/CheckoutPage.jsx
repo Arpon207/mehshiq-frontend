@@ -3,26 +3,39 @@ import Coupon from "../../components/Coupon/Coupon";
 import "./checkoutPage.css";
 import { useSelector } from "react-redux";
 import { RxCross2 } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import BillingDetails from "../../components/BillingDetails/BillingDetails";
 
 const CheckoutPage = () => {
-  const [shippingCharge, setShippingCharge] = useState(100);
+  const [division, setDivision] = useState("Dhaka");
   const { products, subtotal } = useSelector((state) => state.cart);
   const [paymentMethod, setPaymentMethod] = useState("Cash on delivery");
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const navigate = useNavigate();
+  const product = useLocation().state;
+
+  const selectedProducts = product ? [product] : products;
+
+  const shippingCharge = division === "Dhaka" ? 80 : 150;
+
+  const finalSubTotal = product ? product.price * product.quantity : subtotal;
 
   const onSubmit = (data) => console.log(data);
 
   return (
     <div className="checkoutPage">
       <div className="cartPage-header">
-        <h1>Checkout</h1>
-        <p>Home &gt; Checkout</p>
+        <div>
+          <h1>Checkout</h1>
+          <p>Home &gt; Checkout</p>
+        </div>
       </div>
       <div className="checkoutPage-container">
-        <BillingDetails onSubmit={onSubmit} />
+        <BillingDetails
+          onSubmit={onSubmit}
+          division={division}
+          setDivision={setDivision}
+        />
         <div className="cartDetails">
           <Coupon />
           <hr />
@@ -33,12 +46,13 @@ const CheckoutPage = () => {
                 <p>Product</p>
                 <p>Subtotal</p>
               </div>
-              {products.map(({ title, price, quantity }) => (
+              {selectedProducts.map(({ title, price, quantity }) => (
                 <div className="orderedProduct">
                   <p>
-                    {title} <RxCross2 /> {quantity}
+                    {title.length > 15 ? title.slice(0, 15) + "..." : title}{" "}
+                    <RxCross2 /> {quantity}
                   </p>
-                  <p>$ {price * quantity}</p>
+                  <p>BDT {price * quantity}</p>
                 </div>
               ))}
             </div>
@@ -46,43 +60,27 @@ const CheckoutPage = () => {
           <hr />
           <div className="cartPage-subtotal">
             <h3>Subtotal</h3>
-            <h3>$ {subtotal}</h3>
+            <h3>BDT {finalSubTotal}</h3>
           </div>
           <hr />
           <div className="shipping">
-            <h3>Shipping</h3>
-            <div className="shipping-option">
-              <div>
-                <input
-                  type="radio"
-                  name="shipping"
-                  id="insideDhaka"
-                  value={100}
-                  onChange={(e) => setShippingCharge(e.target.value)}
-                  defaultChecked
-                />
-                <label htmlFor="insideDhaka">Inside Dhaka</label>
-              </div>
-              <strong>100</strong>
+            <div>
+              <h3>Shipping</h3>
+              <h3>BDT {shippingCharge}</h3>
             </div>
-            <div className="shipping-option">
-              <div>
-                <input
-                  type="radio"
-                  name="shipping"
-                  id="outsideDhaka"
-                  value={150}
-                  onChange={(e) => setShippingCharge(e.target.value)}
-                />
-                <label htmlFor="outsideDhaka">Outside Dhaka</label>
-              </div>
-              <strong>150</strong>
+            <div className="shippingCharge">
+              <li>
+                Inside Dhaka <strong>BDT 80</strong>
+              </li>
+              <li>
+                Outside Dhaka <strong>BDT 150</strong>
+              </li>
             </div>
           </div>
           <hr />
           <div className="cartPage-total">
             <h3>Total: </h3>
-            <h3>$ {subtotal + parseInt(shippingCharge)}</h3>
+            <h3>BDT {finalSubTotal + parseInt(shippingCharge)}</h3>
           </div>
           <hr />
           <div className="paymentMethod">

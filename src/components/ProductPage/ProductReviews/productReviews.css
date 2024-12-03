@@ -16,6 +16,15 @@
   margin-bottom: 30px;
 }
 
+.reviewLoader,
+.noReview {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .allReviews .review-flex {
   display: flex;
   align-items: center;
@@ -47,6 +56,21 @@
   margin-top: 10px;
   color: rgba(0, 0, 0, 0.8);
   font-size: 14px;
+}
+
+.allReviews .reviewImages {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.allReviews .reviewImages img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 
 /*<-------Add review------------->*/

@@ -17,7 +17,6 @@ const Layout = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [location.pathname]);
-  console.log(window.scrollY);
   return (
     <div className="main-layout">
       <nav>

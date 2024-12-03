@@ -26,11 +26,9 @@ const Navbar = () => {
                 <Link to={"/collections/mini-bags"}>Mini Bag</Link>
               </div>
               <div>
-                <strong>Men</strong>
+                <strong>Backpacks</strong>
                 <hr />
-                <Link>Backpack</Link>
-                <Link>Wallet</Link>
-                <Link>Crossbody Bag</Link>
+                <Link to={"/collections/backpacks"}>All Backpacks</Link>
               </div>
             </div>
           </NavLink>

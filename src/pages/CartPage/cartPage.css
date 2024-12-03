@@ -44,10 +44,31 @@
   accent-color: var(--clr4);
 }
 
+.cartPage-empty {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cartPage-empty h3 {
+  font-size: 24px;
+}
+
+.cartPage-empty button {
+  background-color: var(--clr5);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 /*------cart products------*/
 .cartProducts-header {
   display: grid;
-  grid-template-columns: 1fr 4fr 2fr 1fr;
+  grid-template-columns: 1fr 3fr 2fr 1fr 1fr;
   margin-bottom: 20px;
   gap: 10px;
 }
@@ -59,7 +80,7 @@
 
 .cartProduct {
   display: grid;
-  grid-template-columns: 1fr 4fr 2fr 1fr;
+  grid-template-columns: 1fr 3fr 2fr 1fr 1fr;
   margin-bottom: 20px;
   align-items: center;
   gap: 10px;
@@ -100,6 +121,17 @@
   justify-self: flex-end;
 }
 
+.cartPage-delete-Item {
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 .cartProducts hr {
   height: 1px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -127,17 +159,10 @@
   justify-content: space-between;
 }
 
-.shipping-option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.shippingCharge li {
   margin-top: 10px;
-}
-
-.shipping-option div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  font-size: 15px;
+  list-style-type: disc;
 }
 
 .cartPage-total {
@@ -184,6 +209,39 @@
   .cartProduct-counter button {
     height: 25px;
     width: 25px;
+  }
+
+  .cartProducts-header p:nth-child(3),
+  .cartProduct-counter {
+    justify-self: flex-start;
+  }
+
+  .cartPage-empty {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cartPage-empty img {
+    width: 200px;
+  }
+
+  .cartPage-empty h3 {
+    font-size: 24px;
+  }
+
+  .cartPage-empty button {
+    background-color: var(--clr5);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 16px;
   }
 }
 

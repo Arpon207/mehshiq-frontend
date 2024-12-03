@@ -12,7 +12,6 @@ const categories = [
   { name: "Tote Bags", path: "tote-bags" },
   { name: "Hand Bags", path: "hand-bags" },
   { name: "Backpacks", path: "backpacks" },
-  { name: "School Bags", path: "school-bags" },
   { name: "Crossbody Bags", path: "crossbody-bags" },
   { name: "Bucket Bags", path: "bucket-bags" },
   { name: "Mini Bags", path: "mini-bags" },
@@ -25,8 +24,6 @@ const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
   const [minValue, set_minValue] = useState(Min);
   const [maxValue, set_maxValue] = useState(Max);
   const location = useLocation();
-
-  console.log(location.pathname.length);
 
   const handleInput = (e) => {
     set_minValue(e.minValue);
