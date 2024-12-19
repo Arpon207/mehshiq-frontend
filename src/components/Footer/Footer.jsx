@@ -3,12 +3,22 @@ import "./footer.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosMail } from "react-icons/io";
 import { IoCall, IoTime } from "react-icons/io5";
-import { products } from "../../constants/products";
 import faceBookIcon from "../../assets/icons/facebook (3).png";
 import tiktokIcon from "../../assets/icons/video.png";
 import instagramIcon from "../../assets/icons/instagram.png";
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const { data: { data } = {} } = useQuery({
+    queryKey: ["mayYouLike"],
+    queryFn: () => {
+      return makeRequest.get("/products/getLeastSold");
+    },
+  });
   return (
     <footer>
       <div>
@@ -63,9 +73,14 @@ const Footer = () => {
         <div>
           <h3>May you like</h3>
           <div className="footer-products">
-            {products.slice(0, 8).map((item, i) => (
-              <div key={i}>
-                <img src={item?.images[0].img} alt="" />
+            {data?.slice(0, 8).map((item, i) => (
+              <div
+                key={i}
+                onClick={() =>
+                  navigate(`/collections/${item.category}/${item._id}`)
+                }
+              >
+                <img src={item?.variants[0]?.image.url} alt="" />
               </div>
             ))}
           </div>

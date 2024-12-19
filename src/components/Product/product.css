@@ -6,6 +6,8 @@
 
 .product img {
   width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .product .productInfo {
@@ -37,23 +39,31 @@
 }
 
 .product .product-images img {
-  width: 40px;
+  width: 38px;
   border-radius: 3px;
 }
 
 .product .product-images .image-selected {
-  border: 1px solid black;
+  border: 1px solid var(--clr9);
 }
 
 .product .productInfo button {
-  padding: 5px;
   border-radius: 5px;
   border: none;
+  height: 40px;
+  width: 40px;
   background-color: var(--clr9);
+  padding: 8px;
+  transition: 0.3s;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.product .productInfo button img {
-  width: 25px;
+.product .productInfo button:hover {
+  background-color: var(--clr8);
 }
 
 @media screen and (max-width: 668px) {

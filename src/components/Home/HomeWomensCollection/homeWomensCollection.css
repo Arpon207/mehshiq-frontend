@@ -27,9 +27,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  background-color: rgb(206, 171, 147, 0.7);
   border: none;
   border-radius: 5px;
+  color: rgb(90, 90, 90);
+  transition: 0.3s;
+}
+
+.homeWomensCollection-header button:hover {
+  background-color: var(--clr8);
   color: white;
 }
 

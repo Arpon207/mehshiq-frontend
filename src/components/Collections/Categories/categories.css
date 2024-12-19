@@ -1,18 +1,18 @@
 .mainCategories {
-  background-color: #092635;
+  background-color: hsla(24, 38%, 85%);
   padding: 50px;
 }
 
 .mainCategories h3 {
   font-size: 24px;
-  color: white;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .mainCategories h3 button {
-  color: white;
+  color: black;
   font-size: 22px;
   display: flex;
   align-items: center;
@@ -32,9 +32,14 @@
 }
 
 .mainCategories div a {
-  color: white;
+  color: rgb(73, 72, 72);
   font-weight: 600;
   font-size: 18px;
+  transition: 0.3s;
+}
+
+.mainCategories div a:hover {
+  color: black;
 }
 
 .category-selected {
@@ -48,7 +53,7 @@
   border-radius: 50%;
   position: absolute;
   left: -10px;
-  background-color: white;
+  background-color: rgb(73, 72, 72);
   top: 0;
   bottom: 0;
   margin: auto 0;
@@ -60,12 +65,17 @@
 
 .filterByPrice h3 {
   font-size: 22px;
+  color: black;
 }
 
 .filterByPrice .multi-range-slider {
   box-shadow: none;
   border: none;
   margin: 10px 0 20px;
+}
+
+.filterByPrice .multi-range-slider .label {
+  color: black !important;
 }
 
 .filterByPrice .multi-range-slider .bar-left,
@@ -117,6 +127,7 @@
 
 .filterByPrice p {
   font-weight: 500;
+  color: black;
 }
 
 .filterByPrice button {

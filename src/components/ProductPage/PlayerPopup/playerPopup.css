@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 99;
+  z-index: 999999;
 }
 
 .playerPopup button {

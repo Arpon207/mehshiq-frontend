@@ -100,7 +100,8 @@
 
 .banner .swiper-slide button {
   width: fit-content;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #ddb79e;
+
   padding: 10px 20px;
   font-size: 16px;
   font-weight: 500;

@@ -11,6 +11,10 @@ import Products from "../components/Collections/Products/Products";
 import { useEffect } from "react";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
+import NotFound from "../pages/NotFound/NotFound";
+import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
 
 const Layout = () => {
   const location = useLocation();
@@ -74,9 +78,25 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "test",
-        element: <Test />,
+        path: "/order-submitted",
+        element: <OrderConfirmation />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "test",
+    element: <Test />,
   },
 ]);

@@ -6,7 +6,7 @@
 
 .productPage-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 50px;
 }
 
@@ -35,45 +35,30 @@
   color: rgb(0, 0, 0, 0.7);
 }
 
-.productPage-colors {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.productPage-variants {
+  margin: 20px 0;
 }
 
-.productPage-colors .colors {
+.productPage .variants {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
 }
 
-.productPage .colors .color {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+.productPage .variants img {
+  width: 60px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
-.productPage .colors .color span {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
+.productPage .variants .variant-selected {
   border: 1px solid black;
 }
 
-.productPage .colors .clr1 span {
-  background-color: black;
-}
-.productPage .colors .clr2 span {
-  background-color: brown;
-}
-.productPage .colors .clr3 span {
-  background-color: white;
-}
-
-.productPage .colors p {
-  font-size: 14px;
+.productPage .error-message {
+  margin-bottom: 10px;
 }
 
 .purchase-container {
@@ -123,11 +108,16 @@
   height: 40px;
   padding: 0 20px;
   border: none;
-  background-color: var(--clr4);
-  color: white;
-  font-size: 16px;
+  background-color: var(--clr9);
+  color: black;
+  font-size: 15px;
   font-weight: 500;
   border-radius: 5px;
+  transition: 0.3s;
+}
+
+.purchase-container > button:hover {
+  background-color: var(--clr8);
 }
 
 .estimatedDelivery {

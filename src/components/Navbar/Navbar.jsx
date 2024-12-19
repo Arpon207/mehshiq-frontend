@@ -4,10 +4,17 @@ import login_icon from "../../assets/icons/login-.png";
 import Cart from "../Cart/Cart";
 import { IoIosArrowDown } from "react-icons/io";
 import MobileMenu from "./MobileMenu";
-import { useState } from "react";
 import Search from "../Search/Search";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
+import { auth } from "../../Lib/firebase.config";
+import { useGetPostsQuery } from "../../redux/postAPI";
 
 const Navbar = () => {
+  const [signOut, loading, error] = useSignOut(auth);
+
+  const { data: categories } = useGetPostsQuery();
+
+  const [user] = useAuthState(auth);
   return (
     <div className="navbar">
       <div className="left">
@@ -16,19 +23,34 @@ const Navbar = () => {
           <NavLink to={"/collections"} className={"collections-nav"}>
             Collections <IoIosArrowDown />
             <div className="collections-dropdown">
-              <div>
-                <strong>Women</strong>
-                <hr />
-                <Link to={"/collections/shoulder-bags"}>Shoulder Bag</Link>
-                <Link to={"/collections/hand-bags"}>Hand Bag</Link>
-                <Link to={"/collections/tote-bags"}>Tote Bag</Link>
-                <Link to={"/collections/backpacks"}>Backpack</Link>
-                <Link to={"/collections/mini-bags"}>Mini Bag</Link>
-              </div>
-              <div>
-                <strong>Backpacks</strong>
-                <hr />
-                <Link to={"/collections/backpacks"}>All Backpacks</Link>
+              <div className="collection-dropdown-content">
+                <div>
+                  <strong>For Women</strong>
+                  <hr />
+                  {categories?.slice(0, 3).map(({ title }, i) => (
+                    <Link
+                      to={`/collections/${title
+                        .split(" ")
+                        .join("-")
+                        .toLocaleLowerCase()}`}
+                    >
+                      {title}
+                    </Link>
+                  ))}
+                  <Link to={"/collections"}>
+                    <strong>More...</strong>
+                  </Link>
+                </div>
+                <div>
+                  <strong>Backpacks</strong>
+                  <hr />
+                  <Link to={"/collections/backpacks"}>All Backpacks</Link>
+                </div>
+                <div>
+                  <strong>For Travels</strong>
+                  <hr />
+                  <Link to={"/collections/backpacks"}>All Travel Bags</Link>
+                </div>
               </div>
             </div>
           </NavLink>
@@ -48,9 +70,39 @@ const Navbar = () => {
         <Search />
         <div className="action-btns">
           <Cart />
-          <button className="nav-login-btn">
-            <img src={login_icon} alt="" className="login-btn" /> Login
-          </button>
+          {user ? (
+            <div className="user">
+              <div className="userBtn">
+                {user?.photoURL ? (
+                  <img src={user?.photoURL} alt="" />
+                ) : (
+                  <p>{user.displayName.substring(0, 1)}</p>
+                )}
+                <div className="userDropdown">
+                  <div className="userDetails">
+                    <div className="userImage">
+                      {user.photoURL ? (
+                        <img src={user.photoURL} alt="" />
+                      ) : (
+                        <p>{user.displayName.substring(0, 1)}</p>
+                      )}
+                    </div>
+                    <div>
+                      <strong>{user.displayName}</strong>
+                      <p>{user.email}</p>
+                    </div>
+                  </div>
+                  <hr />
+                  <Link>My Orders</Link>
+                  <button onClick={async () => await signOut()}>Signout</button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <NavLink className="nav-login-btn" to={"/login"}>
+              <img src={login_icon} alt="" className="login-btn" /> Login
+            </NavLink>
+          )}
         </div>
       </div>
     </div>

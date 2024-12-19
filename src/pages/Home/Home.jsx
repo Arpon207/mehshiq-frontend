@@ -8,9 +8,11 @@ import WhatWeOffer from "../../components/Home/WhatWeOffer/WhatWeOffer";
 import Banner from "../../components/Home/Banner/Banner";
 import upArrow from "../../assets/icons/up-arrow (1).png";
 import { useEffect, useState } from "react";
+import { useGetPostsQuery } from "../../redux/postAPI";
 
 const Home = () => {
   const [scrollY, setScrollY] = useState(0);
+  const { data: posts } = useGetPostsQuery({});
 
   useEffect(() => {
     const handleScroll = () => {

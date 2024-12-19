@@ -4,44 +4,24 @@ import { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import menu from "../../assets/icons/menu.png";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
+import { useGetPostsQuery } from "../../redux/postAPI";
 
-const links = {
-  women: [
-    {
-      path: "/collections/shoulder-bags",
-      title: "Shoulder Bag",
-    },
-    {
-      path: "/collections/hand-bags",
-      title: "Hand Bag",
-    },
-    {
-      path: "/collections/tote-bags",
-      title: "Tote Bag",
-    },
-    {
-      path: "/collections/backpacks",
-      title: "Backpacks",
-    },
-    {
-      path: "/collections/mini-bags",
-      title: "Mini Bags",
-    },
-  ],
-  backpacks: [
-    {
-      path: "/collections/backpacks",
-      title: "All Backpacks",
-    },
-  ],
-};
+const links = [
+  { name: "Shoulder Bags", path: "shoulder-bags" },
+  { name: "Tote Bags", path: "tote-bags" },
+  { name: "Hand Bags", path: "hand-bags" },
+  { name: "Backpacks", path: "backpacks" },
+  { name: "Crossbody Bags", path: "crossbody-bags" },
+  { name: "Bucket Bags", path: "bucket-bags" },
+  { name: "Mini Bags", path: "mini-bags" },
+  { name: "Clutch Bags", path: "clutch-bags" },
+  { name: "Travel Bags", path: "travel-bags" },
+];
 
 const MobileMenu = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const [collectionsNavOpen, setCollectionsNavOpen] = useState({
-    backpacks: false,
-    women: false,
-  });
+  const [collectionsNavOpen, setCollectionsNavOpen] = useState(false);
+  const { data } = useGetPostsQuery();
 
   useEffect(() => {
     if (navOpen) {
@@ -72,61 +52,37 @@ const MobileMenu = () => {
             to={"/collections"}
             className={"collections-nav"}
           >
-            Women Collections
+            Collections
           </NavLink>
-          <button
-            onClick={() =>
-              setCollectionsNavOpen({
-                backpacks: false,
-                women: !collectionsNavOpen.women,
-              })
-            }
-          >
-            {collectionsNavOpen.women ? <HiOutlineMinus /> : <HiOutlinePlus />}
+          <button onClick={() => setCollectionsNavOpen(!collectionsNavOpen)}>
+            {collectionsNavOpen ? <HiOutlineMinus /> : <HiOutlinePlus />}
           </button>
         </li>
 
-        {collectionsNavOpen.women && (
+        {collectionsNavOpen && (
           <div className="mobileMenu-collections-dropdown">
             <div>
-              <strong>Women</strong>
-              {links.women.map(({ title, path }, i) => (
-                <Link to={path} key={i} onClick={() => setNavOpen(false)}>
-                  {title}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-        <li className="mobileMenu-collections-nav">
-          <NavLink
-            onClick={() => setNavOpen(false)}
-            to={"/collections"}
-            className={"collections-nav"}
-          >
-            Backpacks
-          </NavLink>
-          <button
-            onClick={() =>
-              setCollectionsNavOpen({
-                backpacks: !collectionsNavOpen.backpacks,
-                women: false,
-              })
-            }
-          >
-            {collectionsNavOpen.backpacks ? (
-              <HiOutlineMinus />
-            ) : (
-              <HiOutlinePlus />
-            )}
-          </button>
-        </li>
-        {collectionsNavOpen.backpacks && (
-          <div className="mobileMenu-collections-dropdown">
-            <div>
-              <strong>Backpacks</strong>
-              {links.backpacks.map(({ path, title }, i) => (
-                <Link to={path} key={i} onClick={() => setNavOpen(false)}>
+              <NavLink
+                to={"/collections"}
+                onClick={() => {
+                  setNavOpen(false);
+                  setCollectionsNavOpen(false);
+                }}
+              >
+                All Bags
+              </NavLink>
+              {data?.map(({ title }, i) => (
+                <Link
+                  to={`/collections/${title
+                    .split(" ")
+                    .join("-")
+                    .toLocaleLowerCase()}`}
+                  key={i}
+                  onClick={() => {
+                    setNavOpen(false);
+                    setCollectionsNavOpen(false);
+                  }}
+                >
                   {title}
                 </Link>
               ))}
@@ -150,7 +106,7 @@ const MobileMenu = () => {
           <NavLink
             onClick={() => setNavOpen(false)}
             className={"login-link"}
-            to={"/login"}
+            to={"/register"}
           >
             Register
           </NavLink>

@@ -4,21 +4,22 @@ import backpackBag from "../../../assets/categories/backpack-bag.jpg";
 import saddleBag from "../../../assets/categories/saddle-bag.jpg";
 import toteBag from "../../../assets/categories/tote-bag.jpg";
 import handBag from "../../../assets/categories/shoulder-bag.jpg";
+import clutch_bag from "../../../assets/categories/clutch_bag.jpg";
 import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
-    name: "Shoulder Bag",
+    name: "Shoulder Bags",
     image: shoulderBag,
     path: "/collections/shoulder-bags",
   },
   {
-    name: "Tote bag",
+    name: "Tote bags",
     image: toteBag,
     path: "/collections/tote-bags",
   },
   {
-    name: "Hand Bag",
+    name: "Handbags",
     image: handBag,
     path: "/collections/hand-bags",
   },
@@ -28,9 +29,9 @@ const categories = [
     path: "/collections/backpacks",
   },
   {
-    name: "Saddle Bag",
-    image: saddleBag,
-    path: "/collections/saddle-bags",
+    name: "Clutch Bags",
+    image: clutch_bag,
+    path: "/collections/clutch-bags",
   },
 ];
 

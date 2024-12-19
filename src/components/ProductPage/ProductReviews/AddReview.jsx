@@ -66,8 +66,6 @@ const AddReview = ({ refetch }) => {
     setIsloading(false);
   };
 
-  console.log(isLoading);
-
   return (
     <div className="addReview">
       <h3>Add Review</h3>

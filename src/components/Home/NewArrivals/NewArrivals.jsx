@@ -12,6 +12,7 @@ import Product from "../../Product/Product";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../../axios";
 import { TailSpin } from "react-loader-spinner";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 const NewArrivals = () => {
   const { data: { data: products } = {}, isLoading } = useQuery({
@@ -74,13 +75,13 @@ const NewArrivals = () => {
             className="NewArrivalsPrevElBtn"
             onClick={() => swiper.slidePrev()}
           >
-            <GrFormPreviousLink />
+            <FaArrowLeftLong />
           </button>
           <button
             className="NewArrivalsNextElBtn"
             onClick={() => swiper.slideNext()}
           >
-            <GrFormNextLink />
+            <FaArrowRightLong />
           </button>
         </Swiper>
       )}

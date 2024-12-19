@@ -14,12 +14,19 @@
 }
 
 .billingDetails form input,
-.billingDetails form select {
+.billingDetails form select,
+.billingDetails form textarea {
   padding: 8px 15px;
   font-size: 16px;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: #f3f3f3;
+  resize: none;
+}
+
+.billingDetails form input::placeholder,
+.billingDetails form textarea::placeholder {
+  font-size: 14px;
 }
 
 .billingDetails form .clientName {

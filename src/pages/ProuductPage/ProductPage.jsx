@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./productPage.css";
-import { products } from "../../constants/products";
 import Rating from "react-rating";
 import { GoStar, GoStarFill } from "react-icons/go";
 import insta from "../../assets/icons/instagram.png";
@@ -20,33 +19,94 @@ import ProductImages from "../../components/ProductPage/ProductImages/ProductIma
 import ProductPageTabs from "../../components/ProductPage/ProductPageTabs/ProductPageTabs";
 import ProductDesc from "../../components/ProductPage/ProductDesc/ProductDesc";
 import ProductReviews from "../../components/ProductPage/ProductReviews/ProductReviews";
-import useFetch from "../../hooks/useFetch";
 import RecommendedProducts from "../../components/ProductPage/RecommendedProducts/RecommendedProducts";
 import Loader from "../../components/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { addToCart, openCart } from "../../redux/cartReducer";
 
+import img1 from "../../assets/bags/bag1.jpg";
+import img2 from "../../assets/bags/bag2.jpg";
+import img3 from "../../assets/bags/bag3.jpg";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Navigation, Thumbs } from "swiper/modules";
+import { FaRegCirclePlay } from "react-icons/fa6";
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+
 const ProductPage = () => {
+  const [selectedVariant, setSelectedVariant] = useState({});
   const [counter, setCounter] = useState(1);
   const { id } = useParams();
   const navigate = useNavigate();
   const currentPageUrl = window.location.href;
-  const { data: product, isLoading } = useFetch(
-    "product",
-    `/products/product/${id}`
-  );
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const { images, title, price, colors, category, _id } = product || {};
+  const { data: { data: product } = {}, isLoading } = useQuery({
+    queryKey: ["product", id],
+    queryFn: () => {
+      return makeRequest.get(`/products/product/${id}`);
+    },
+    catchTime: 0,
+  });
+
+  const { variants, title, price, colors, category, _id, tags } = product || {};
+
+  const [thumbsSwiper, setThumbsSwiper] = useState();
 
   const [selectedTab, setSelectedTab] = useState(1);
 
   const [showPopup, setShowPopup] = useState(false);
+  const dispatch = useDispatch();
 
   const linkCopy = () => {
     copy(currentPageUrl);
   };
 
-  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    if (!selectedVariant.image) {
+      setErrorMessage("Please choose a color variant you want to purchase.");
+      return;
+    }
+    const uniqueKey = `${selectedVariant.image.public_id + _id}`;
+    dispatch(
+      addToCart({
+        uniqueKey,
+        variant: selectedVariant.image,
+        title,
+        price,
+        _id,
+        quantity: counter,
+      })
+    );
+    setCounter(1);
+    setSelectedVariant({});
+    dispatch(openCart());
+  };
+
+  const handleBuyNow = () => {
+    if (!selectedVariant.image) {
+      setErrorMessage("Please choose a color variant you want to purchase.");
+      return;
+    }
+    const uniqueKey = `${selectedVariant.image.public_id + _id}`;
+    navigate("/checkout", {
+      state: {
+        uniqueKey,
+        variant: selectedVariant.image,
+        title,
+        price,
+        _id,
+        quantity: counter,
+      },
+    });
+  };
 
   return (
     <>
@@ -55,7 +115,86 @@ const ProductPage = () => {
       ) : (
         <div className="productPage">
           <div className="productPage-grid">
-            <ProductImages setShowPopup={setShowPopup} images={images} />
+            <div>
+              {variants && (
+                <div className="productPage-images">
+                  <Swiper
+                    style={{
+                      "--swiper-navigation-color": "#fff",
+                      "--swiper-pagination-color": "#fff",
+                    }}
+                    spaceBetween={10}
+                    navigation={true}
+                    thumbs={{
+                      swiper:
+                        thumbsSwiper && !thumbsSwiper.destroyed
+                          ? thumbsSwiper
+                          : null,
+                    }}
+                    modules={[Navigation, Thumbs]}
+                    className="mySwiper2"
+                  >
+                    {variants?.map(({ image }, i) => (
+                      <SwiperSlide key={i}>
+                        <img src={image.url} alt="" />
+                      </SwiperSlide>
+                    ))}
+                    <SwiperSlide>
+                      <img src={img1} alt="" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src={img2} alt="" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src={img3} alt="" />
+                    </SwiperSlide>
+                    <SwiperSlide
+                      className="productPage-video"
+                      onClick={() => setShowPopup(true)}
+                    >
+                      <button>
+                        <FaRegCirclePlay />
+                      </button>
+                      <video
+                        src={
+                          "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4"
+                        }
+                        alt=""
+                        className="video-image"
+                        controlsList="nodownload"
+                        onClick={() => setShowPopup(true)}
+                      />
+                    </SwiperSlide>
+                  </Swiper>
+                  <Swiper
+                    onSwiper={setThumbsSwiper}
+                    spaceBetween={16 / 2}
+                    slidesPerView={4}
+                    watchSlidesProgress={true}
+                    modules={[Navigation, Thumbs]}
+                    className="mySwiper"
+                  >
+                    {variants?.map(({ image }, i) => (
+                      <SwiperSlide key={i}>
+                        <img src={image.url} alt="" />
+                      </SwiperSlide>
+                    ))}
+                    <SwiperSlide className="productPage-video">
+                      <button>
+                        <FaRegCirclePlay />
+                      </button>
+                      <video
+                        src={
+                          "https://res.cloudinary.com/dfjxig6z2/video/upload/v1717190167/Test/ts0zrfo8kcxdtttopfqp.mp4"
+                        }
+                        alt=""
+                        className="video-image"
+                      />
+                    </SwiperSlide>
+                  </Swiper>
+                </div>
+              )}
+            </div>
             <div className="productPage-details">
               <h3 className="productPage-title">Stylish {title}</h3>
               <p className="productPage-category">{category}</p>
@@ -72,17 +211,25 @@ const ProductPage = () => {
                 Officiis repellendus labore maiores recusandae inventore
                 blanditiis eaque aperiam sapiente, harum fugiat.
               </p>
-              <div className="productPage-colors">
+              <div className="productPage-variants">
                 <strong>Available Colors:</strong>
-                <div className="colors">
-                  {colors?.map((color, i) => (
-                    <div key={i} className="color clr1">
-                      <span></span>
-                      <p>{color.toUpperCase()}</p>
-                    </div>
+                <div className="variants">
+                  {variants.map((variant, i) => (
+                    <img
+                      src={variant?.image.url}
+                      alt=""
+                      onClick={() => {
+                        setSelectedVariant(variant);
+                        setErrorMessage("");
+                      }}
+                      className={`${
+                        variant === selectedVariant && "variant-selected"
+                      }`}
+                    />
                   ))}
                 </div>
               </div>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
               <div className="purchase-container">
                 <div className="productPage-quantity">
                   <p>{counter}</p>
@@ -104,35 +251,12 @@ const ProductPage = () => {
                 </div>
                 <button
                   onClick={() => {
-                    dispatch(
-                      addToCart({
-                        img: images[0]?.img,
-                        title,
-                        price,
-                        _id,
-                        quantity: counter,
-                      })
-                    );
-                    dispatch(openCart());
+                    handleAddToCart();
                   }}
                 >
                   ADD TO CART
                 </button>
-                <button
-                  onClick={() =>
-                    navigate("/checkout", {
-                      state: {
-                        img: images[0]?.img,
-                        title,
-                        price,
-                        _id,
-                        quantity: counter,
-                      },
-                    })
-                  }
-                >
-                  BUY NOW
-                </button>
+                <button onClick={() => handleBuyNow()}>BUY NOW</button>
               </div>
               <p className="estimatedDelivery">
                 <strong>Estimated Delivery:</strong> Friday, May 31 - Tuesday,
@@ -144,8 +268,9 @@ const ProductPage = () => {
               <p className="productPage-tags">
                 <strong>TAGS:</strong>
                 <div>
-                  <span>Woman Bags</span>
-                  <span>Hand Bags</span>
+                  {tags.map((tag, i) => (
+                    <span key={i}>{tag}</span>
+                  ))}
                 </div>
               </p>
               <div className="productPage-share">

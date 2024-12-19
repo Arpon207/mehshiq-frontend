@@ -3,12 +3,22 @@ import "./recommendedProducts.css";
 import Product from "../../Product/Product";
 import { Navigation, Pagination } from "swiper/modules";
 import { SwiperSlide, Swiper } from "swiper/react";
+import { makeRequest } from "../../../axios";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
 
-const RecommendedProducts = ({ category }) => {
-  const { data: { result } = {} } = useFetch(
-    "recommendedProducts",
-    `/products/productsByCategory?category=${category}`
-  );
+const RecommendedProducts = () => {
+  const { category } = useParams();
+
+  const { data: { data: { result } = {} } = {} } = useQuery({
+    queryKey: ["recommendedProducts", category],
+    queryFn: () => {
+      return makeRequest.get(
+        `/products/productsByCategory?category=${category}`
+      );
+    },
+    catchTime: 0,
+  });
 
   return (
     <div className="recommendedProducts">

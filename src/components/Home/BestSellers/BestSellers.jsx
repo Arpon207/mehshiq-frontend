@@ -4,16 +4,14 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Grid, Navigation, Pagination } from "swiper/modules";
-import cartIcon from "../../../assets/icons/shopping-bag.png";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import bg6 from "../../../assets/bg6.jpg";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart, openCart } from "../../../redux/cartReducer";
 import { useQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { makeRequest } from "../../../axios";
 import { TailSpin } from "react-loader-spinner";
+import { FaEye } from "react-icons/fa6";
 
 const BestSellers = () => {
   const [ref, inView] = useInView();
@@ -26,7 +24,6 @@ const BestSellers = () => {
   });
   const swiper = useSwiper();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   return (
     <div className="bestSellers" ref={ref}>
       <div className="container">
@@ -97,28 +94,20 @@ const BestSellers = () => {
                       )
                     }
                   >
-                    <img src={product.images[0]?.img} alt="" />
+                    <img src={product?.variants[0]?.image?.url} alt="" />
                     <div>
                       <div>
                         <h3>{product.title}</h3>
                         <p>BDT {product.price}</p>
                       </div>
                       <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          dispatch(
-                            addToCart({
-                              img: product.images[0]?.img,
-                              title: product.title,
-                              price: product.price,
-                              _id: product._id,
-                              quantity: 1,
-                            })
-                          );
-                          dispatch(openCart());
-                        }}
+                        onClick={(e) =>
+                          navigate(
+                            `/collections/${product?.category}/${product?._id}`
+                          )
+                        }
                       >
-                        <img src={cartIcon} alt="" />
+                        <FaEye />
                       </button>
                     </div>
                   </SwiperSlide>

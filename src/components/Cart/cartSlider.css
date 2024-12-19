@@ -112,7 +112,7 @@
 
 .nav-cart-buttons button {
   width: 100%;
-  background-color: var(--clr4);
+  background-color: var(--clr8);
   padding: 10px;
   color: var(--clr1);
   border-radius: 2px;
@@ -127,5 +127,14 @@
   .cartSlider {
     width: 350px;
     height: 95svh;
+  }
+
+  .cartslider-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 50vh;
+    gap: 20px;
   }
 }

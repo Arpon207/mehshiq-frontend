@@ -24,9 +24,9 @@
     top: 80px;
     width: 300px;
     z-index: 999;
-    background-color: #092635;
+    background-color: hsla(24, 38%, 85%) !important;
     color: white;
-    min-height: calc(100vh - 80px);
+    min-height: 120vh !important;
   }
 
   .filter-open {
@@ -41,14 +41,16 @@
     position: fixed;
     bottom: 40px;
     left: 40px;
-    background-color: #092635;
-    font-size: 18px;
+    background-color: hsl(24, 70%, 80%) !important;
+    font-size: 16px !important;
     color: white;
     padding: 5px 15px;
     display: flex;
     align-items: center;
     gap: 5px;
     border-radius: 5px;
+    color: black !important;
+    font-weight: 600;
   }
 }
 

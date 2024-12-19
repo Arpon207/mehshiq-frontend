@@ -2,23 +2,19 @@ import { NavLink, useLocation } from "react-router-dom";
 import "./categories.css";
 import { useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
-import { products } from "../../../constants/products";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { useGetPostsQuery } from "../../../redux/postAPI";
 
-const categories = [
-  { name: "All Bags", path: "" },
-  { name: "Shoulder Bags", path: "shoulder-bags" },
-  { name: "Tote Bags", path: "tote-bags" },
-  { name: "Hand Bags", path: "hand-bags" },
-  { name: "Backpacks", path: "backpacks" },
-  { name: "Crossbody Bags", path: "crossbody-bags" },
-  { name: "Bucket Bags", path: "bucket-bags" },
-  { name: "Mini Bags", path: "mini-bags" },
-  { name: "Sync Set", path: "sync-bet" },
-];
+const Categories = ({
+  setFilterOpen,
+  setMinMax,
+  refetch,
+  setCurrentPage,
+  products,
+}) => {
+  const { data: categories } = useGetPostsQuery();
 
-const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
   const Min = Math.min(...products.map((product) => product.price));
   const Max = Math.max(...products.map((product) => product.price));
   const [minValue, set_minValue] = useState(Min);
@@ -46,9 +42,26 @@ const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
         </h3>
         <hr />
         <div>
-          {categories.map(({ path, name }, i) => (
+          <NavLink
+            to={"/collections"}
+            onClick={() => {
+              setCurrentPage(1);
+              setFilterOpen(false);
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
+            }}
+            className={`${
+              location.pathname === "/collections" && "category-selected"
+            }`}
+          >
+            All Bags
+          </NavLink>
+          {categories?.map(({ title }, i) => (
             <NavLink
-              to={path}
+              to={title.split(" ").join("-").toLocaleLowerCase()}
               onClick={() => {
                 setCurrentPage(1);
                 setFilterOpen(false);
@@ -59,12 +72,18 @@ const Categories = ({ setFilterOpen, setMinMax, refetch, setCurrentPage }) => {
                 });
               }}
               className={`${
-                (location.pathname === `/collections/${path}` ||
-                  (location.pathname === "/collections" && path === "")) &&
+                (location.pathname ===
+                  `/collections/${title
+                    .split(" ")
+                    .join("-")
+                    .toLocaleLowerCase()}` ||
+                  (location.pathname === "/collections" &&
+                    title.split(" ").join("-").toLocaleLowerCase() === "")) &&
                 "category-selected"
               }`}
+              key={i}
             >
-              {name}
+              {title}
             </NavLink>
           ))}
         </div>

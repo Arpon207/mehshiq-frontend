@@ -35,8 +35,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #5debd7;
-  font-size: 20px;
+  background-color: rgb(206, 171, 147, 0.7);
+  font-size: 18px;
   position: absolute;
   border: none;
   z-index: 99;

@@ -35,9 +35,9 @@ const CartSlider = ({ isOpen, setIsOpen }) => {
           </div>
           {products.length > 0 ? (
             <div className="cart-products">
-              {products.map(({ title, price, quantity, img, _id }, i) => (
+              {products.map(({ title, price, quantity, variant, _id }, i) => (
                 <div className="cart-product" key={i}>
-                  <img src={img} alt="" />
+                  <img src={variant.url} alt="" />
                   <div>
                     <strong>{title}</strong>
                     <p>
@@ -47,7 +47,11 @@ const CartSlider = ({ isOpen, setIsOpen }) => {
 
                   <button
                     className="nav-cart-delete-btn"
-                    onClick={() => dispatch(removeItem({ _id }))}
+                    onClick={() =>
+                      dispatch(
+                        removeItem({ uniqueKey: `${variant.public_id + _id}` })
+                      )
+                    }
                   >
                     <RxCross2 />
                   </button>

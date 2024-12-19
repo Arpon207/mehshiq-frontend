@@ -44,17 +44,30 @@
 }
 
 .collections-nav:hover .collections-dropdown {
-  display: flex;
   position: absolute;
   background-color: white;
-  width: 400px;
+  width: 500px;
   left: 0;
   top: 100%;
   z-index: 99;
-  padding: 40px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  gap: 40px;
+  padding-top: 20px;
   border-radius: 5px;
+  display: block;
+}
+
+.collection-dropdown-content {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  background-color: var(--clr9) !important;
+  width: 100%;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.collection-dropdown-content hr {
+  border-top: 1px rgba(0, 0, 0, 0.1);
+  width: 80%;
 }
 
 .collections-dropdown div {
@@ -113,8 +126,8 @@
 
 .navbar .right .cart-btn span {
   position: absolute;
-  background: black;
-  color: white;
+  background: var(--clr9);
+  color: black;
   height: 15px;
   width: 15px;
   border-radius: 50%;
@@ -141,6 +154,7 @@
   gap: 5px;
   font-size: 16px;
   font-weight: 500;
+  color: black;
 }
 
 .navbar .nav-links .login-link {
@@ -151,8 +165,85 @@
   display: none;
 }
 
-.navbar hr {
+.navbar > hr {
   display: none;
+}
+
+.userBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.userBtn p {
+  font-weight: 500;
+}
+
+.userBtn img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userDropdown {
+  display: none;
+}
+
+.userBtn:hover .userDropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 100%;
+  z-index: 99;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 5px;
+}
+
+.userDropdown .userDetails {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.userDropdown .userDetails .userImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.userDropdown hr {
+  height: 0.5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 10px 0;
+}
+
+.userDropdown a {
+  color: black;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.userDropdown a:hover {
+  color: var(--clr9);
+}
+
+.userDropdown button {
+  background-color: var(--clr9);
+  padding: 8px;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 992px) {

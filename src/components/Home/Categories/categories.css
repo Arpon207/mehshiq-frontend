@@ -52,11 +52,17 @@
 
 .categories-card-content button {
   border: none;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(206, 171, 147, 0.9);
   font-size: 15px;
   padding: 10px 14px;
   border-radius: 5px;
   font-weight: 600;
+  transition: 0.3s;
+}
+
+.categories-card-content button:hover {
+  background-color: var(--clr8);
+  color: rgb(255, 255, 255, 0.8);
 }
 
 .categories-card-container img {

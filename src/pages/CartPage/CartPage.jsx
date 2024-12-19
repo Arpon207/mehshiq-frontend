@@ -34,10 +34,10 @@ const CartPage = () => {
               <p>Action</p>
             </div>
             <div className="cartProducts">
-              {products.map(({ img, title, price, quantity, _id }, i) => (
+              {products.map(({ variant, title, price, quantity, _id }, i) => (
                 <div key={i}>
                   <div className="cartProduct">
-                    <img src={img} alt="" />
+                    <img src={variant.url} alt="" />
                     <div className="cartProduct-details">
                       <strong>{title}</strong>
                       <p>$ {price}</p>
@@ -45,18 +45,38 @@ const CartPage = () => {
                     <div className="cartProduct-counter">
                       <button
                         disabled={quantity === 1}
-                        onClick={() => dispatch(decreaseQuantity(_id))}
+                        onClick={() =>
+                          dispatch(
+                            decreaseQuantity({
+                              uniqueKey: `${variant.public_id + _id}`,
+                            })
+                          )
+                        }
                       >
                         -
                       </button>
                       <p>{quantity}</p>
-                      <button onClick={() => dispatch(increaseQuantity(_id))}>
+                      <button
+                        onClick={() =>
+                          dispatch(
+                            increaseQuantity({
+                              uniqueKey: `${variant.public_id + _id}`,
+                            })
+                          )
+                        }
+                      >
                         +
                       </button>
                     </div>
                     <strong>$ {price * quantity}</strong>
                     <button
-                      onClick={() => dispatch(removeItem({ _id }))}
+                      onClick={() =>
+                        dispatch(
+                          removeItem({
+                            uniqueKey: `${variant.public_id + _id}`,
+                          })
+                        )
+                      }
                       className="cartPage-delete-Item"
                     >
                       <MdDeleteOutline />

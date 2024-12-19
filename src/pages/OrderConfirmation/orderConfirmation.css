@@ -1,0 +1,111 @@
+.orderConfirmation {
+  min-height: calc(100vh - 100px);
+  padding: 0 10%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: center;
+  background-color: hsla(24, 38%, 85%);
+}
+
+.orderConfirmation hr {
+  margin: 30px 0;
+  height: 1px;
+  border: 0.5px solid rgb(0, 0, 0, 0.1);
+}
+
+.OrderCorfirmationBillingDetails h2 {
+  font-weight: 600;
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.OrderCorfirmationBillingDetails > p {
+  margin-bottom: 20px;
+}
+
+.OrderCorfirmationBillingDetails p strong {
+  font-weight: 500;
+}
+
+.OrderSummary strong {
+  font-weight: 600;
+}
+
+.OrderCorfirmationBillingDetails h3 {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.OrderCorfirmationBillingDetails div p {
+  margin-bottom: 10px;
+}
+
+.OrderSummary {
+  background-color: var(--clr9);
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.OrderSummary h3 {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.orderSummaryHeader {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.orderSummaryHeader div {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.orderSummaryProducts > div {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  margin-bottom: 20px;
+}
+
+.orderSummaryProducts img {
+  width: 50px;
+  height: 50px;
+}
+
+.orderSummaryProducts div div p {
+  margin-top: 5px;
+}
+
+.OrderSummary > p {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .orderConfirmation {
+    min-height: unset;
+    padding: 50px 20px;
+    grid-template-columns: 1fr;
+  }
+
+  .OrderCorfirmationBillingDetails h2 {
+    font-weight: 600;
+    font-size: 48px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1500px) {
+  .orderConfirmation {
+    padding: 0 5%;
+  }
+}

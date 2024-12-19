@@ -1,6 +1,8 @@
 footer {
   padding: 50px 50px 20px;
-  background-color: #f0efff;
+  /* background-color: rgb(206, 171, 147, 0.7); */
+  background-color: black;
+  color: white;
 }
 
 footer > div {
@@ -78,7 +80,6 @@ footer > p {
 @media screen and (max-width: 992px) {
   footer {
     padding: 50px 10% 20px;
-    background-color: #f0efff;
   }
 
   footer > div {

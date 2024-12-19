@@ -24,32 +24,25 @@ const BillingDetails = ({ onSubmit, division, setDivision }) => {
   return (
     <div className="billingDetails">
       <h3>Billing Details</h3>
-      <form action="" onSubmit={handleSubmit(onSubmit)}>
-        <div className="clientName">
-          <div className="inputWrapper">
-            <label htmlFor="firstname">First Name</label>
-            <input
-              id="firstname"
-              type="text"
-              {...register("firstname", { required: true })}
-            />
-          </div>
-          <div className="inputWrapper">
-            <label htmlFor="lastname">Last Name</label>
-            <input
-              id="lastname"
-              type="text"
-              {...register("lastname", { required: true })}
-            />
-          </div>
+      <form action="" onSubmit={handleSubmit(onSubmit)} id="orderFrom">
+        <div className="inputWrapper">
+          <label htmlFor="firstname">Name</label>
+          <input
+            id="firstname"
+            type="text"
+            {...register("name", { required: true })}
+            placeholder="Name"
+          />
         </div>
+
         <div className="clientName">
           <div className="inputWrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email (Optional)</label>
             <input
               id="email"
               type="email"
-              {...register("email", { required: true })}
+              {...register("email")}
+              placeholder="Email"
             />
           </div>
           <div className="inputWrapper">
@@ -58,16 +51,9 @@ const BillingDetails = ({ onSubmit, division, setDivision }) => {
               id="phone"
               type="number"
               {...register("phone", { required: true })}
+              placeholder="Phone"
             />
           </div>
-        </div>
-        <div className="inputWrapper">
-          <label htmlFor="lastname">Company Name (Optional)</label>
-          <input
-            id="lastname"
-            type="text"
-            {...register("lastname", { required: true })}
-          />
         </div>
         <div className="inputWrapper">
           <label htmlFor="divisions">Division</label>
@@ -83,12 +69,34 @@ const BillingDetails = ({ onSubmit, division, setDivision }) => {
           </select>
         </div>
         <div className="inputWrapper">
+          <label htmlFor="district">District</label>
+          <input
+            id="district"
+            type="text"
+            {...register("district", { required: true })}
+            placeholder="District"
+          />
+        </div>
+        <div className="inputWrapper">
           <label htmlFor="area">Area</label>
           <input
             id="area"
             type="text"
             {...register("area", { required: true })}
+            placeholder="House No. / Road No. / Village / Thana / Upazilla"
           />
+        </div>
+        <div className="inputWrapper">
+          <label htmlFor="additionalComment">
+            Additional Comment ( Optional )
+          </label>
+          <textarea
+            name=""
+            id="additionalComment"
+            {...register("additionalComment")}
+            rows={5}
+            placeholder="Additional Comment..."
+          ></textarea>
         </div>
       </form>
     </div>

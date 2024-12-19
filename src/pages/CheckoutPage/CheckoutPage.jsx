@@ -1,18 +1,26 @@
 import { useState } from "react";
 import Coupon from "../../components/Coupon/Coupon";
 import "./checkoutPage.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RxCross2 } from "react-icons/rx";
 import { useLocation, useNavigate } from "react-router-dom";
 import BillingDetails from "../../components/BillingDetails/BillingDetails";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../Lib/firebase.config";
+import { makeRequest } from "../../axios";
+import { resetCart } from "../../redux/cartReducer";
+import { TailSpin } from "react-loader-spinner";
 
 const CheckoutPage = () => {
   const [division, setDivision] = useState("Dhaka");
   const { products, subtotal } = useSelector((state) => state.cart);
   const [paymentMethod, setPaymentMethod] = useState("Cash on delivery");
   const [isTermsChecked, setIsTermsChecked] = useState(false);
+  const [isLoading, setIsloading] = useState(false);
   const navigate = useNavigate();
   const product = useLocation().state;
+  const [user] = useAuthState(auth);
+  const dispatch = useDispatch();
 
   const selectedProducts = product ? [product] : products;
 
@@ -20,7 +28,40 @@ const CheckoutPage = () => {
 
   const finalSubTotal = product ? product.price * product.quantity : subtotal;
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    setIsloading(true);
+    const orderDetails = {
+      userDetails: user
+        ? {
+            userEmail: user.email,
+            userName: user.displayName,
+          }
+        : {},
+      products: selectedProducts,
+      customerName: data.name,
+      customerPhone: data.phone,
+      customerEmail: data.email,
+      ShippingDivision: division,
+      shippingDistrict: data.district,
+      shippingArea: data.area,
+      paymentMethod: paymentMethod,
+      shippingCharge,
+      additionalComment: data.additionalComment,
+    };
+
+    const { data: { result } = {} } = await makeRequest.post(
+      "/orders/create",
+      orderDetails
+    );
+    if (result) {
+      setIsloading(false);
+      dispatch(resetCart());
+      navigate("/order-submitted", {
+        state: result,
+      });
+    }
+    setIsloading(false);
+  };
 
   return (
     <div className="checkoutPage">
@@ -43,11 +84,13 @@ const CheckoutPage = () => {
             <h3>Your Order</h3>
             <div className="orderedProducts">
               <div className="orderedProducts-header">
+                <p>Image</p>
                 <p>Product</p>
                 <p>Subtotal</p>
               </div>
-              {selectedProducts.map(({ title, price, quantity }) => (
+              {selectedProducts.map(({ title, price, quantity, variant }) => (
                 <div className="orderedProduct">
+                  <img src={variant.url} alt="" />
                   <p>
                     {title.length > 15 ? title.slice(0, 15) + "..." : title}{" "}
                     <RxCross2 /> {quantity}
@@ -92,6 +135,7 @@ const CheckoutPage = () => {
                 id="cashOnDelivery"
                 value={"Cash on delivery"}
                 onChange={(e) => setPaymentMethod(e.target.value)}
+                defaultChecked={true}
               />
               <label htmlFor="cashOnDelivery">Cash on delivery</label>
             </div>
@@ -117,10 +161,24 @@ const CheckoutPage = () => {
             </div>
           </div>
           <button
-            disabled={!isTermsChecked}
-            className="cartDetails-checkout-btn"
+            type="submit"
+            form="orderFrom"
+            disabled={!isTermsChecked || isLoading}
+            className={`cartDetails-checkout-btn`}
           >
-            Confirm Order
+            {isLoading && (
+              <TailSpin
+                visible={isLoading}
+                height="15"
+                width="15"
+                color="#00000099"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            )}
+            {isLoading ? "Please Wait" : "Confirm Order"}
           </button>
         </div>
       </div>

@@ -6,5 +6,3 @@ const fetch = async () => {
 };
 
 const data = fetch();
-
-console.log(data);
