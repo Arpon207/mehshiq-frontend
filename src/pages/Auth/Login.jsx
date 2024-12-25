@@ -31,7 +31,7 @@ const Login = () => {
     <div className="auth">
       <div className="auth-banner">
         <img src={authBanner} alt="" />
-        <h3>MehshiQ</h3>
+        <h3 onClick={() => navigate("/")}>MehshiQ</h3>
         <h2>
           Welcome, We are glad to <br /> see you again!
         </h2>

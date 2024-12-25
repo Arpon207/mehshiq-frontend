@@ -78,7 +78,10 @@ const ProductPage = () => {
     dispatch(
       addToCart({
         uniqueKey,
-        variant: selectedVariant.image,
+        variant: {
+          image: selectedVariant.image,
+          color: selectedVariant.colorName,
+        },
         title,
         price,
         _id,
@@ -99,7 +102,10 @@ const ProductPage = () => {
     navigate("/checkout", {
       state: {
         uniqueKey,
-        variant: selectedVariant.image,
+        variant: {
+          image: selectedVariant.image,
+          color: selectedVariant.colorName,
+        },
         title,
         price,
         _id,
@@ -139,15 +145,6 @@ const ProductPage = () => {
                         <img src={image.url} alt="" />
                       </SwiperSlide>
                     ))}
-                    <SwiperSlide>
-                      <img src={img1} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <img src={img2} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <img src={img3} alt="" />
-                    </SwiperSlide>
                     <SwiperSlide
                       className="productPage-video"
                       onClick={() => setShowPopup(true)}
@@ -196,7 +193,7 @@ const ProductPage = () => {
               )}
             </div>
             <div className="productPage-details">
-              <h3 className="productPage-title">Stylish {title}</h3>
+              <h3 className="productPage-title">{title}</h3>
               <p className="productPage-category">{category}</p>
               <div className="productPage-rating">
                 <Rating
@@ -212,7 +209,7 @@ const ProductPage = () => {
                 blanditiis eaque aperiam sapiente, harum fugiat.
               </p>
               <div className="productPage-variants">
-                <strong>Available Colors:</strong>
+                <strong>Color: {selectedVariant?.colorName}</strong>
                 <div className="variants">
                   {variants.map((variant, i) => (
                     <img
@@ -296,7 +293,7 @@ const ProductPage = () => {
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
           />
-          {selectedTab === 1 && <ProductDesc />}
+          {selectedTab === 1 && <ProductDesc desc={product?.description} />}
           {selectedTab === 2 && <ProductReviews />}
 
           <RecommendedProducts category={category} />

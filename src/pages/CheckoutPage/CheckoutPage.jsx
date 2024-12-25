@@ -47,6 +47,7 @@ const CheckoutPage = () => {
       paymentMethod: paymentMethod,
       shippingCharge,
       additionalComment: data.additionalComment,
+      subtotal: finalSubTotal,
     };
 
     const { data: { result } = {} } = await makeRequest.post(
@@ -90,7 +91,7 @@ const CheckoutPage = () => {
               </div>
               {selectedProducts.map(({ title, price, quantity, variant }) => (
                 <div className="orderedProduct">
-                  <img src={variant.url} alt="" />
+                  <img src={variant.image.url} alt="" />
                   <p>
                     {title.length > 15 ? title.slice(0, 15) + "..." : title}{" "}
                     <RxCross2 /> {quantity}

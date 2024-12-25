@@ -8,6 +8,7 @@ import Search from "../Search/Search";
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth } from "../../Lib/firebase.config";
 import { useGetPostsQuery } from "../../redux/postAPI";
+import logo from "../../assets/logo1.png";
 
 const Navbar = () => {
   const [signOut, loading, error] = useSignOut(auth);
@@ -64,7 +65,9 @@ const Navbar = () => {
         <MobileMenu />
       </div>
       <div className="center">
-        <NavLink to={"/"}>MehShiq</NavLink>
+        <NavLink to={"/"}>
+          <img src={logo} alt="" />
+        </NavLink>
       </div>
       <div className="right">
         <Search />

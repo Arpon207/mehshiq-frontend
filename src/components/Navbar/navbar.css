@@ -100,6 +100,12 @@
   align-self: center;
 }
 
+.navbar .center img {
+  width: 80px;
+  filter: invert(57%) sepia(35%) saturate(306%) hue-rotate(342deg)
+    brightness(94%) contrast(92%);
+}
+
 .navbar .center a {
   border: none;
   font-size: 24px;

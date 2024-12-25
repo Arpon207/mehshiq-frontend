@@ -22,6 +22,7 @@
   font-weight: 500;
   font-size: 28px;
   color: white;
+  cursor: pointer;
 }
 .auth-banner h2 {
   position: absolute;

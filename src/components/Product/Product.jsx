@@ -29,7 +29,7 @@ const Product = ({ product }) => {
         </div>
         <div className="bottom">
           <div className="product-images">
-            {variants?.map(({ image }, i) => (
+            {variants?.slice(0, 3).map(({ image }, i) => (
               <img
                 key={i}
                 src={image.url}

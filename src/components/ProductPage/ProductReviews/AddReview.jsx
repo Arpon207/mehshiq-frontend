@@ -27,7 +27,7 @@ const AddReview = ({ refetch }) => {
     const compressedFile = await imageCompression(file, option);
 
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(compressedFile);
     reader.onloadend = () => {
       setPreviewImages([...previewImages, reader.result]);
     };

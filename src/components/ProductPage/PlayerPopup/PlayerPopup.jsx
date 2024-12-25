@@ -1,7 +1,7 @@
 import { RxCross1 } from "react-icons/rx";
 import "./playerPopup.css";
 
-const PlayerPopup = ({ setShowPopup }) => {
+const PlayerPopup = ({ setShowPopup, video }) => {
   return (
     <div className="playerPopup" onClick={() => setShowPopup(false)}>
       <button>

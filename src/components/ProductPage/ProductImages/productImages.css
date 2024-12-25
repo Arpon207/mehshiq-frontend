@@ -82,7 +82,33 @@
   font-size: 20px;
 }
 
-@media screen and (max-width: 668px) {
+@media screen and (max-width: 400px) {
+  .productPage-images .mySwiper2 {
+    height: 280px;
+    width: 280px;
+  }
+  .productPage-images .mySwiper {
+    height: calc((280px / 4));
+    width: 280px;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 450px) {
+  .productPage-images .mySwiper2 {
+    height: 320px;
+    width: 320px;
+  }
+  .productPage-images .mySwiper {
+    height: calc(320px / 4);
+    width: 320px;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+}
+
+@media screen and (min-width: 451px) and (max-width: 668px) {
   .productPage-images .mySwiper2 {
     height: 350px;
     width: 350px;

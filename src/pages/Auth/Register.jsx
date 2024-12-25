@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authBanner from "../../assets/authBanner2.jpg";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
@@ -20,16 +20,22 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
   };
 
+  if (user) {
+    navigate("/");
+  }
+
   return (
     <div className="auth">
       <div className="auth-banner">
         <img src={authBanner} alt="" />
-        <h3>MehshiQ</h3>
+        <h3 onClick={() => navigate("/")}>MehshiQ</h3>
         <h2>
           Welcome, Looks like <br /> you're new here!
         </h2>

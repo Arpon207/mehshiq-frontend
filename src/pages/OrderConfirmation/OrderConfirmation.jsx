@@ -68,7 +68,7 @@ const OrderConfirmation = () => {
         <div className="orderSummaryProducts">
           {result.products.map((product) => (
             <div>
-              <img src={product.variant.url} alt="" />
+              <img src={product.variant.image.url} alt="" />
               <div>
                 <strong>{product.title}</strong>
                 <p>Price: {product.price}</p>

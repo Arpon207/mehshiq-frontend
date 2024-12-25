@@ -4,6 +4,7 @@ import emptyCart from "../../assets/icons/abandoned-cart.png";
 import {
   closeCart,
   removeItem,
+  resetCart,
   subTotalCounter,
 } from "../../redux/cartReducer";
 import { useEffect } from "react";
@@ -27,6 +28,7 @@ const CartSlider = ({ isOpen, setIsOpen }) => {
           <div>
             <div className="cartSlider-header">
               <h2>Cart</h2>
+              <button onClick={() => dispatch(resetCart())}>reset</button>
               <button onClick={() => dispatch(closeCart())}>
                 <RxCross2 />
               </button>
@@ -37,7 +39,7 @@ const CartSlider = ({ isOpen, setIsOpen }) => {
             <div className="cart-products">
               {products.map(({ title, price, quantity, variant, _id }, i) => (
                 <div className="cart-product" key={i}>
-                  <img src={variant.url} alt="" />
+                  <img src={variant.image?.url} alt="" />
                   <div>
                     <strong>{title}</strong>
                     <p>
@@ -49,7 +51,9 @@ const CartSlider = ({ isOpen, setIsOpen }) => {
                     className="nav-cart-delete-btn"
                     onClick={() =>
                       dispatch(
-                        removeItem({ uniqueKey: `${variant.public_id + _id}` })
+                        removeItem({
+                          uniqueKey: `${variant.image.public_id + _id}`,
+                        })
                       )
                     }
                   >

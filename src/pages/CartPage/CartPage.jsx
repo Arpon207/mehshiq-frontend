@@ -37,7 +37,7 @@ const CartPage = () => {
               {products.map(({ variant, title, price, quantity, _id }, i) => (
                 <div key={i}>
                   <div className="cartProduct">
-                    <img src={variant.url} alt="" />
+                    <img src={variant.image.url} alt="" />
                     <div className="cartProduct-details">
                       <strong>{title}</strong>
                       <p>$ {price}</p>
@@ -48,7 +48,7 @@ const CartPage = () => {
                         onClick={() =>
                           dispatch(
                             decreaseQuantity({
-                              uniqueKey: `${variant.public_id + _id}`,
+                              uniqueKey: `${variant.image.public_id + _id}`,
                             })
                           )
                         }
@@ -60,7 +60,7 @@ const CartPage = () => {
                         onClick={() =>
                           dispatch(
                             increaseQuantity({
-                              uniqueKey: `${variant.public_id + _id}`,
+                              uniqueKey: `${variant.image.public_id + _id}`,
                             })
                           )
                         }
@@ -73,7 +73,7 @@ const CartPage = () => {
                       onClick={() =>
                         dispatch(
                           removeItem({
-                            uniqueKey: `${variant.public_id + _id}`,
+                            uniqueKey: `${variant.image.public_id + _id}`,
                           })
                         )
                       }
