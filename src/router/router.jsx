@@ -15,6 +15,8 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import NotFound from "../pages/NotFound/NotFound";
 import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
+import OrderTracking from "../pages/OrderStatus/OrderTracking";
+import OrderStatus from "../pages/OrderStatus/OrderStatus";
 
 const Layout = () => {
   const location = useLocation();
@@ -80,6 +82,14 @@ export const router = createBrowserRouter([
       {
         path: "/order-submitted",
         element: <OrderConfirmation />,
+      },
+      {
+        path: "/order-tracking",
+        element: <OrderTracking />,
+      },
+      {
+        path: "/order-tracking/:orderId",
+        element: <OrderStatus />,
       },
       {
         path: "*",

@@ -1,0 +1,46 @@
+.orderStatus {
+  min-height: calc(90vh - 80px);
+}
+
+.order-status-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-status-form-container form {
+  width: 25%;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.orderStatus form .inputWrapper {
+  margin-bottom: 10px;
+}
+
+.orderStatus form label {
+  font-size: 14px;
+}
+
+.orderStatus form input {
+  padding: 8px 15px;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #f3f3f3;
+  resize: none;
+}
+
+.orderStatus form button {
+  background-color: var(--clr9);
+  padding: 8px 25px;
+  font-size: 16px;
+  margin-top: 5px;
+  color: white;
+  transition: 0.3s;
+}
+
+.orderStatus form button:hover {
+  background-color: var(--clr8);
+}

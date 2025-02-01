@@ -7,7 +7,7 @@ import link from "../../assets/icons/link.png";
 import messenger from "../../assets/icons/messenger.png";
 import whatsapp from "../../assets/icons/whatsapp.png";
 import facebook from "../../assets/icons/facebook (3).png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FacebookMessengerShareButton,
   FacebookShareButton,
@@ -23,10 +23,6 @@ import RecommendedProducts from "../../components/ProductPage/RecommendedProduct
 import Loader from "../../components/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { addToCart, openCart } from "../../redux/cartReducer";
-
-import img1 from "../../assets/bags/bag1.jpg";
-import img2 from "../../assets/bags/bag2.jpg";
-import img3 from "../../assets/bags/bag3.jpg";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -68,6 +64,12 @@ const ProductPage = () => {
   const linkCopy = () => {
     copy(currentPageUrl);
   };
+
+  useEffect(() => {
+    if (product?.variants?.length === 1) {
+      setSelectedVariant(product?.variants[0]);
+    }
+  }, [product]);
 
   const handleAddToCart = () => {
     if (!selectedVariant.image) {
@@ -145,7 +147,7 @@ const ProductPage = () => {
                         <img src={image.url} alt="" />
                       </SwiperSlide>
                     ))}
-                    <SwiperSlide
+                    {/* <SwiperSlide
                       className="productPage-video"
                       onClick={() => setShowPopup(true)}
                     >
@@ -161,7 +163,7 @@ const ProductPage = () => {
                         controlsList="nodownload"
                         onClick={() => setShowPopup(true)}
                       />
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                   </Swiper>
                   <Swiper
                     onSwiper={setThumbsSwiper}
@@ -176,7 +178,7 @@ const ProductPage = () => {
                         <img src={image.url} alt="" />
                       </SwiperSlide>
                     ))}
-                    <SwiperSlide className="productPage-video">
+                    {/* <SwiperSlide className="productPage-video">
                       <button>
                         <FaRegCirclePlay />
                       </button>
@@ -187,7 +189,7 @@ const ProductPage = () => {
                         alt=""
                         className="video-image"
                       />
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                   </Swiper>
                 </div>
               )}
@@ -293,7 +295,9 @@ const ProductPage = () => {
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
           />
-          {selectedTab === 1 && <ProductDesc desc={product?.description} />}
+          {selectedTab === 1 && (
+            <ProductDesc desc={product?.description} video={product?.video} />
+          )}
           {selectedTab === 2 && <ProductReviews />}
 
           <RecommendedProducts category={category} />

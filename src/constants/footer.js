@@ -4,46 +4,42 @@ import { IoCall, IoTime } from "react-icons/io5";
 
 export const customerCare = [
   {
-    title: "Order Status",
-    path: "/",
+    title: "Order Track",
+    path: "/order-tracking",
   },
   {
     title: "Warranty & Repairs",
-    path: "",
+    path: "/warranty-&-repair",
   },
   {
     title: "Watch Care & Instructions",
-    path: "",
+    path: "/watch-care-&-instructions",
   },
   {
     title: "Return & Exchanges",
-    path: "",
+    path: "return-&-exchanges",
   },
   {
     title: "Gift Services",
-    path: "",
+    path: "/gift-services",
   },
 ];
 
 export const moreInfo = [
   {
     title: "Terms & Conditions",
-    path: "/",
+    path: "/terms",
   },
   {
     title: "Shipping Info",
-    path: "",
+    path: "/shipping-info",
   },
   {
     title: "Privacy",
-    path: "",
+    path: "privacy",
   },
   {
     title: "FAQs",
-    path: "",
-  },
-  {
-    title: "Terms",
-    path: "",
+    path: "/faqs",
   },
 ];

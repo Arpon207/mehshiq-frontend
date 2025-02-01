@@ -12,7 +12,10 @@ import { resetCart } from "../../redux/cartReducer";
 import { TailSpin } from "react-loader-spinner";
 
 const CheckoutPage = () => {
-  const [division, setDivision] = useState("Dhaka");
+  const [selectedDivision, setSelectedDivision] = useState("");
+  const [districts, setDistricts] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+  const [shippingCharge, setShippingCharge] = useState(80);
   const { products, subtotal } = useSelector((state) => state.cart);
   const [paymentMethod, setPaymentMethod] = useState("Cash on delivery");
   const [isTermsChecked, setIsTermsChecked] = useState(false);
@@ -24,7 +27,8 @@ const CheckoutPage = () => {
 
   const selectedProducts = product ? [product] : products;
 
-  const shippingCharge = division === "Dhaka" ? 80 : 150;
+  // const shippingCharge =
+  //   selectedDistrict === "Dhaka" || selectedDistrict === "" ? 80 : 150;
 
   const finalSubTotal = product ? product.price * product.quantity : subtotal;
 
@@ -41,7 +45,7 @@ const CheckoutPage = () => {
       customerName: data.name,
       customerPhone: data.phone,
       customerEmail: data.email,
-      ShippingDivision: division,
+      ShippingDivision: data.division,
       shippingDistrict: data.district,
       shippingArea: data.area,
       paymentMethod: paymentMethod,
@@ -64,6 +68,8 @@ const CheckoutPage = () => {
     setIsloading(false);
   };
 
+  console.log(selectedDistrict);
+
   return (
     <div className="checkoutPage">
       <div className="cartPage-header">
@@ -75,8 +81,13 @@ const CheckoutPage = () => {
       <div className="checkoutPage-container">
         <BillingDetails
           onSubmit={onSubmit}
-          division={division}
-          setDivision={setDivision}
+          setSelectedDivision={setSelectedDivision}
+          setDistricts={setDistricts}
+          districts={districts}
+          selectedDivision={selectedDivision}
+          setSelectedDistrict={setSelectedDistrict}
+          selectedDistrict={selectedDistrict}
+          setShippingCharge={setShippingCharge}
         />
         <div className="cartDetails">
           <Coupon />

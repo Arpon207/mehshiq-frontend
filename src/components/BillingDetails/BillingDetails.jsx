@@ -1,25 +1,49 @@
 import { useForm } from "react-hook-form";
 import "./billingDetails.css";
 import { useEffect, useState } from "react";
+import { bangladesh, divisions } from "../../constants/location";
 
-const BillingDetails = ({ onSubmit, division, setDivision }) => {
-  const divisions = [
-    "Dhaka",
-    "Chattogram",
-    "Barishal",
-    "Khulna",
-    "Rangpur",
-    "Rajshahi",
-    "Sylhet",
-    "Mymensingh",
-  ];
-
+const BillingDetails = ({
+  onSubmit,
+  setSelectedDivision,
+  setDistricts,
+  // districts,
+  selectedDivision,
+  setSelectedDistrict,
+  selectedDistrict,
+  setShippingCharge,
+}) => {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+
+  const handleDivisionChange = (e) => {
+    setSelectedDivision(e.target.value);
+    setSelectedDistrict("");
+    setShippingCharge(selectedDivision === "Dhaka" ? 80 : 150);
+  };
+
+  const handleDistrictChange = (e) => {
+    const district = e.target.value;
+    setSelectedDistrict(district);
+    setShippingCharge(district === "Dhaka" ? 80 : 150);
+  };
+
+  const districts =
+    divisions.find((division) => division.division === selectedDivision)
+      ?.districts || [];
+
+  // useEffect(() => {
+  //   const districts = bangladesh.find(
+  //     (div) => div.division === selectedDivision
+  //   );
+  //   setDistricts(districts.districts);
+  // }, [selectedDivision]);
+
+  console.log(districts);
 
   return (
     <div className="billingDetails">
@@ -55,27 +79,41 @@ const BillingDetails = ({ onSubmit, division, setDivision }) => {
             />
           </div>
         </div>
+
+        {/* divisions */}
         <div className="inputWrapper">
-          <label htmlFor="divisions">Division</label>
+          <label htmlFor="divisions">Select Division</label>
           <select
-            name="divisions"
+            {...register("division", { required: true })}
             id="divisions"
-            value={division}
-            onChange={(e) => setDivision(e.target.value)}
+            value={selectedDivision}
+            onChange={handleDivisionChange}
           >
+            <option>Select</option>
             {divisions.map((div, i) => (
-              <option value={div}>{div}</option>
+              <option key={i} value={div.name}>
+                {div.name}
+              </option>
             ))}
           </select>
         </div>
+
+        {/* district */}
         <div className="inputWrapper">
-          <label htmlFor="district">District</label>
-          <input
+          <label htmlFor="district">Select District</label>
+          <select
             id="district"
-            type="text"
             {...register("district", { required: true })}
-            placeholder="District"
-          />
+            value={selectedDistrict}
+            onChange={handleDistrictChange}
+            disabled={!selectedDivision}
+          >
+            {districts.map((district, i) => (
+              <option key={i} value={district.name}>
+                {district.name}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="inputWrapper">
           <label htmlFor="area">Area</label>

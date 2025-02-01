@@ -101,6 +101,12 @@
   object-fit: cover;
 }
 
+.bestSellers .swiper-slide h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
 .bestSellers .swiper-slide > div {
   display: flex;
   justify-content: space-between;

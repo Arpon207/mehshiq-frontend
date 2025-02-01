@@ -2,6 +2,7 @@
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .product img {
@@ -15,13 +16,13 @@
 }
 
 .product .productInfo div p:first-child {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .product .productInfo div p:last-child {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 5px;
 }
 

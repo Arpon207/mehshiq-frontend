@@ -38,7 +38,12 @@ footer li {
   transition: 0.3s all;
 }
 
-footer li:hover {
+footer li a {
+  color: white;
+  transition: 0.3s all;
+}
+
+footer li:hover a {
   color: #ff6666;
   margin-left: 5px;
 }

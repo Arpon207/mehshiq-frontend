@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -40,7 +41,9 @@ const Footer = () => {
           <h3>Customer Care</h3>
           <ul>
             {customerCare.map((item, i) => (
-              <li key={i}>{item.title}</li>
+              <li key={i}>
+                <Link to={item.path}>{item.title}</Link>
+              </li>
             ))}
           </ul>
         </div>
@@ -48,7 +51,9 @@ const Footer = () => {
           <h3>More Info</h3>
           <ul>
             {moreInfo.map((item, i) => (
-              <li key={i}>{item.title}</li>
+              <li key={i}>
+                <Link to={item.path}>{item.title}</Link>
+              </li>
             ))}
           </ul>
         </div>
